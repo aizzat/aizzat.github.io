@@ -422,7 +422,7 @@ const initThreeJS = () => {
     const beamMat = new THREE.MeshBasicMaterial({
       color: 0x00ffff,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.05,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       side: THREE.DoubleSide
