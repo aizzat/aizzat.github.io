@@ -85,25 +85,8 @@ section {
   font-size: 5rem;
   letter-spacing: -2px;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #FFDF00, #FFA000); /* Premium yellow/gold */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  display: inline-block;
-  animation: fadeInDown 1s ease-out forwards;
-}
-
-.hero h1::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  background: none;
-  -webkit-text-fill-color: white;
-  color: white;
-  filter: blur(15px);
-  opacity: 0.9;
+  color: #FFDF00; /* Plain yellow color */
+  animation: fadeInDown 1s ease-out forwards, pulseCode 1.5s infinite alternate ease-in-out 1s;
 }
 
 .hero p {
@@ -617,4 +600,9 @@ footer {
     max-height: 50vh;
     overflow-y: auto;
   }
+}
+
+@keyframes pulseCode {
+  0% { opacity: 1; }
+  100% { opacity: 0.5; }
 }
