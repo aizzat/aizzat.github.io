@@ -4132,6 +4132,7 @@ void main() {
           </div>
         </li>
         <li><a href="#impact">Impact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -4233,7 +4234,7 @@ void main() {
     </div>
   </section>
 
-  <footer>
+  <footer id="contact">
     <div class="container">
       <div class="footer-content">
         <div class="footer-col">
@@ -4243,6 +4244,11 @@ void main() {
           <img src="/partners/umpsalogo.png" alt="UMPSA Logo" style="height: 60px; margin-bottom: 15px; object-fit: contain;">
           <p>Autonomous, Robotic & Mechatronics System (ARMS) Research Cluster</p>
           <p>Faculty of Manufacturing and Mechatronic Engineering Technology, UMPSA</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <p>For any enquiries please email to:</p>
+          <a href="mailto:maizzat@umpsa.edu.my" style="color: var(--color-primary); font-weight: 600; text-decoration: none; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fas fa-envelope" style="margin-right: 8px;"></i>maizzat@umpsa.edu.my</a>
         </div>
         <div class="footer-col">
           <h4>Industry Partners</h4>
