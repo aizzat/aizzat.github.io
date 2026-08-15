@@ -4256,7 +4256,7 @@ void main() {
             <img src="/partners/moverobotic.webp" alt="MOVE Robotic">
             <img src="/partners/pixmoving.png" alt="Pix Moving">
             <img src="/partners/aeroground.PNG" alt="Aeroground">
-            <img src="/partners/DREBAR Trademark - 1.png" alt="DREBAR">
+            <img src="/partners/DREBAR Trademark - 12.png" alt="DREBAR" class="partner-logo-drebar">
           </div>
         </div>
       </div>
