@@ -357,7 +357,6 @@ const initThreeJS = () => {
   let robotArm;
   let mixer;
 
-  // Load Robot Arm
   gltfLoader.load('/robot_arm.glb', (gltf) => {
     robotArm = gltf.scene;
     // Normalize scale and position - make it massive like the sphere
@@ -537,7 +536,7 @@ const initThreeJS = () => {
 
     if (robotArm) {
       // Base fixed (no swinging or floating)
-      robotArm.rotation.y = targetX * 0.2; // Slight parallax look
+      robotArm.rotation.y = (Math.PI / 2) + (targetX * 0.2); // Side profile with slight parallax
       robotArm.rotation.x = targetY * 0.2;
       robotArm.position.y = -15;
 
