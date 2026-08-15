@@ -592,12 +592,15 @@ footer {
 /* Fix mobile alignment */
 @media (max-width: 768px) {
   .dropdown-content {
-    position: static;
-    transform: none;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    min-width: 100%;
-    margin-top: 0.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(15, 15, 15, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.8);
+    width: 90vw;
+    margin-top: 1rem;
+    max-height: 50vh;
+    overflow-y: auto;
   }
 }
