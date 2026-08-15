@@ -216,14 +216,14 @@ if (labsContainer) {
 
 // Populate researchers
 const researchers = [
-  { name: 'Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', title: 'Head of Cluster', tags: ['P04'], image: '/members/pm-aziz-7.jpg', about: 'Expert in industrial mechatronics, advanced manufacturing, and thermofluid process control.' },
-  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', title: 'Researcher', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
-  { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://blog.ump.edu.my/anajmuddin/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
-  { name: 'Dr. Mohd Azri Hizami Bin Rasid', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://sites.google.com/ump.edu.my/mahrasid/home?pli=1', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
-  { name: 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal', title: 'Researcher', tags: ['P03'], image: '/members/hafiz-21.jpg', website: 'https://scholar.google.com/citations?user=z6j75UsAAAAJ&hl=en', about: 'Expertise in drive systems, thermal modelling, and dynamic control engineering.' },
-  { name: 'Dr. Ismayuzri Bin Ishak', title: 'Researcher', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Works on advanced actuators, smart industrial systems, and computational fluid dynamics.' },
-  { name: 'Dr. Mohd Azraai Bin Mohd Razman', title: 'Researcher', tags: ['P04'], image: '/members/dr-azraai-5.jpg', website: 'https://imamslab.umpsa.edu.my/index.php/en/about-us/people', about: 'Specializes in smart systems, mechatronic design, and sustainable manufacturing processes.' },
-  { name: 'Mr. Wan Hasbullah Bin Mohd Isa', title: 'Researcher', tags: ['P04'], image: '/members/wan-hasbullah-12.jpg', website: 'https://imamslab.umpsa.edu.my/index.php/en/about-us/people', about: 'Focuses on industrial mechatronics, automation, and intelligent process control.' }
+  { name: 'Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', shortName: 'PM Dr. Abdul Aziz', title: 'Head of Cluster', tags: ['P04'], image: '/members/pm-aziz-7.jpg', about: 'Expert in industrial mechatronics, advanced manufacturing, and thermofluid process control.' },
+  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Researcher', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
+  { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', shortName: 'Dr. Najmuddin', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://blog.ump.edu.my/anajmuddin/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
+  { name: 'Dr. Mohd Azri Hizami Bin Rasid', shortName: 'Dr. Azri', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://sites.google.com/ump.edu.my/mahrasid/home?pli=1', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
+  { name: 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal', shortName: 'Dr. Hafiz', title: 'Researcher', tags: ['P03'], image: '/members/hafiz-21.jpg', website: 'https://scholar.google.com/citations?user=z6j75UsAAAAJ&hl=en', about: 'Expertise in drive systems, thermal modelling, and dynamic control engineering.' },
+  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Researcher', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Works on advanced actuators, smart industrial systems, and computational fluid dynamics.' },
+  { name: 'Dr. Mohd Azraai Bin Mohd Razman', shortName: 'Dr. Azraai', title: 'Researcher', tags: ['P04'], image: '/members/dr-azraai-5.jpg', website: 'https://imamslab.umpsa.edu.my/index.php/en/about-us/people', about: 'Specializes in smart systems, mechatronic design, and sustainable manufacturing processes.' },
+  { name: 'Mr. Wan Hasbullah Bin Mohd Isa', shortName: 'Mr. Wan Hasbullah', title: 'Researcher', tags: ['P04'], image: '/members/wan-hasbullah-12.jpg', website: 'https://imamslab.umpsa.edu.my/index.php/en/about-us/people', about: 'Focuses on industrial mechatronics, automation, and intelligent process control.' }
 ];
 
 const researchersContainer = document.querySelector('.researchers-grid');
@@ -239,7 +239,7 @@ researchers.forEach((r, index) => {
   const rId = `researcher-${index}`;
   
   // Add to dropdown
-  dropdownHTML += `<a href="#${rId}">${r.name}</a>`;
+  dropdownHTML += `<a href="#${rId}">${r.shortName || r.name}</a>`;
   
   // Add to grid
   gridHTML += `
