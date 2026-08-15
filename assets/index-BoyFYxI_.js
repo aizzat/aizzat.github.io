@@ -4213,7 +4213,7 @@ void main() {
         <div class="impact-item">
           <h3>RM3M+</h3>
           <p class="label">ACCUMULATED GRANTS</p>
-          <p class="desc">MOHE • MOSTI • TERAJU • French Ministry of Foreign Affairs • industry partners</p>
+          <p class="desc">MOHE • MOSTI • TERAJU • French Ministry of Foreign Affairs • strategic collaborators</p>
         </div>
         <div class="impact-item">
           <h3>100+</h3>
@@ -4251,7 +4251,7 @@ void main() {
           <a href="mailto:maizzat@umpsa.edu.my" style="color: var(--color-primary); font-weight: 600; text-decoration: none; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fas fa-envelope" style="margin-right: 8px;"></i>maizzat@umpsa.edu.my</a>
         </div>
         <div class="footer-col">
-          <h4>Industry Partners</h4>
+          <h4>Strategic Collaborators</h4>
           <div class="partner-logos">
             <img src="/partners/moverobotic.webp" alt="MOVE Robotic">
             <img src="/partners/pixmoving.png" alt="Pix Moving">
