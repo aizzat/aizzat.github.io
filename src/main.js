@@ -363,6 +363,7 @@ const initThreeJS = () => {
     // Normalize scale and position - make it massive like the sphere
     robotArm.scale.set(15, 15, 15);
     robotArm.position.set(0, -15, -10);
+    robotArm.rotation.y = Math.PI / 2; // Set default view to side profile (S shape)
     
     // Apply darker hologram material
     robotArm.traverse((child) => {
