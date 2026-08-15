@@ -7,8 +7,21 @@ document.querySelector('#app').innerHTML = `
     <div class="container nav-container">
       <a href="#home" class="logo">ARMS FTKPM</a>
       <ul class="nav-links">
-        <li><a href="#pillars">Pillars</a></li>
-        <li><a href="#laboratories">Laboratories</a></li>
+        <li class="dropdown">
+          <a href="#pillars" class="dropbtn">Pillars <i class="fas fa-caret-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <div class="dropdown-content">
+            <a href="#pillar-p01">P01: Autonomous Mobility</a>
+            <a href="#pillar-p02">P02: Intelligent Robotics</a>
+            <a href="#pillar-p03">P03: Actuators & Drives</a>
+            <a href="#pillar-p04">P04: Industrial Mechatronics</a>
+          </div>
+        </li>
+        <li class="dropdown">
+          <a href="#laboratories" class="dropbtn">Laboratories <i class="fas fa-caret-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <div class="dropdown-content" id="laboratories-dropdown">
+            <!-- Populated via JS -->
+          </div>
+        </li>
         <li class="dropdown">
           <a href="#researchers" class="dropbtn">Researchers <i class="fas fa-caret-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
           <div class="dropdown-content" id="researchers-dropdown">
@@ -34,7 +47,7 @@ document.querySelector('#app').innerHTML = `
     <div class="container">
       <h2>The Four Core Research Pillars</h2>
       <div class="pillars-grid">
-      <div class="pillar-card">
+      <div class="pillar-card" id="pillar-p01">
         <h3><span class="tag" style="margin-right: 0.5rem">P01</span>Autonomous Mobility & Vehicle Dynamics</h3>
         <ul>
           <li>Autonomous ground vehicles (AGV) & self-driving technology</li>
@@ -42,7 +55,7 @@ document.querySelector('#app').innerHTML = `
           <li>Vehicle dynamics & active suspension systems</li>
         </ul>
       </div>
-      <div class="pillar-card">
+      <div class="pillar-card" id="pillar-p02">
         <h3><span class="tag" style="margin-right: 0.5rem">P02</span>Intelligent & Assistive Robotics</h3>
         <ul>
           <li>Kinematics & dynamic control of robotic arms</li>
@@ -50,7 +63,7 @@ document.querySelector('#app').innerHTML = `
           <li>Precision trajectory tracking & manipulator design</li>
         </ul>
       </div>
-      <div class="pillar-card">
+      <div class="pillar-card" id="pillar-p03">
         <h3><span class="tag" style="margin-right: 0.5rem">P03</span>Actuators, Drive Systems & Dynamic Control</h3>
         <ul>
           <li>Electric motor drives & electromechanical actuators</li>
@@ -58,7 +71,7 @@ document.querySelector('#app').innerHTML = `
           <li>Advanced control engineering & system identification</li>
         </ul>
       </div>
-      <div class="pillar-card">
+      <div class="pillar-card" id="pillar-p04">
         <h3><span class="tag" style="margin-right: 0.5rem">P04</span>Industrial Mechatronics & Smart Systems</h3>
         <ul>
           <li>Mechatronic system design & advanced manufacturing</li>
@@ -184,13 +197,21 @@ const labs = [
 ];
 
 const labsContainer = document.getElementById('labs-container');
+const labsDropdownContainer = document.getElementById('laboratories-dropdown');
+let labsDropdownHTML = '';
+
 if (labsContainer) {
   labs.forEach((lab, index) => {
     const delay = index * 0.1;
+    const labId = `lab-${index}`;
     const labCard = document.createElement('div');
+    labCard.id = labId; // Add ID for anchor linking
     labCard.className = 'lab-card-3d';
     labCard.style.animation = `fadeInUp 0.6s ease-out ${0.2 + delay}s forwards`;
     labCard.style.opacity = '0';
+    
+    // Build Dropdown Item
+    labsDropdownHTML += `<a href="#${labId}">${lab.acronym}</a>`;
     
     labCard.innerHTML = `
       <div class="lab-card-inner">
@@ -212,6 +233,8 @@ if (labsContainer) {
     `;
     labsContainer.appendChild(labCard);
   });
+  
+  if(labsDropdownContainer) labsDropdownContainer.innerHTML = labsDropdownHTML;
 }
 
 // Populate researchers
