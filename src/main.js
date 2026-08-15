@@ -9,7 +9,12 @@ document.querySelector('#app').innerHTML = `
       <ul class="nav-links">
         <li><a href="#pillars">Pillars</a></li>
         <li><a href="#laboratories">Laboratories</a></li>
-        <li><a href="#researchers">Researchers</a></li>
+        <li class="dropdown">
+          <a href="#researchers" class="dropbtn">Researchers <i class="fas fa-caret-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <div class="dropdown-content" id="researchers-dropdown">
+            <!-- Populated via JS -->
+          </div>
+        </li>
         <li><a href="#impact">Impact</a></li>
       </ul>
     </div>
@@ -222,13 +227,23 @@ const researchers = [
 ];
 
 const researchersContainer = document.querySelector('.researchers-grid');
-researchersContainer.innerHTML = researchers.map(r => {
+const dropdownContainer = document.getElementById('researchers-dropdown');
+
+let dropdownHTML = '';
+let gridHTML = '';
+
+researchers.forEach((r, index) => {
   // Using placehold.co to generate placeholders based on initials
   const initials = r.name.split(' ').map(n => n[0]).slice(0, 2).join('');
   const bgImage = r.image ? r.image : `https://placehold.co/400x400/184A92/FFFFFF?text=${initials}`;
+  const rId = `researcher-${index}`;
   
-  return `
-    <div class="researcher-card">
+  // Add to dropdown
+  dropdownHTML += `<a href="#${rId}">${r.name}</a>`;
+  
+  // Add to grid
+  gridHTML += `
+    <div class="researcher-card" id="${rId}">
       <div class="researcher-img" style="background: url('${bgImage}') center/cover"></div>
       <div class="researcher-info">
         <h4>${r.name}</h4>
@@ -243,7 +258,10 @@ researchersContainer.innerHTML = researchers.map(r => {
       </div>
     </div>
   `;
-}).join('');
+});
+
+researchersContainer.innerHTML = gridHTML;
+if(dropdownContainer) dropdownContainer.innerHTML = dropdownHTML;
 
 // Three.js Background Implementation (Robotic Arm & Drone)
 const initThreeJS = () => {
