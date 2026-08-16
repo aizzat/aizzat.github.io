@@ -47,6 +47,9 @@ document.querySelector('#app').innerHTML = `
   <section id="pillars">
     <div class="container">
       <h2>The Four Core Research Pillars</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Our research is organized around four interconnected pillars, driving innovation across autonomous systems, robotics, and mechatronics.
+      </p>
       <div class="pillars-grid">
       <div class="pillar-card" id="pillar-p01">
         <h3><span class="tag" style="margin-right: 0.5rem">P01</span>Autonomous Mobility & Vehicle Dynamics</h3>
@@ -88,6 +91,9 @@ document.querySelector('#app').innerHTML = `
   <section id="laboratories">
     <div class="container">
       <h2>Specialized Laboratories</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Each lab is equipped to support cutting-edge research and development across our core focus areas.
+      </p>
       <div class="laboratories-grid" id="labs-container">
         <!-- Labs injected via JS -->
       </div>
@@ -109,6 +115,9 @@ document.querySelector('#app').innerHTML = `
   <section id="impact" class="impact">
     <div class="container">
       <h2>Impact At A Glance</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Highlights of our research cluster's achievements, funding, and contributions to the field.
+      </p>
       <div class="impact-grid">
         <div class="impact-item">
           <h3>RM3M+</h3>
@@ -194,11 +203,20 @@ const labs = [
     icon: 'fa-cogs'
   },
   { 
-    acronym: 'RMRL', 
-    name: 'Robot Mechanism Research Lab', 
+    acronym: 'OM Lab', 
+    name: 'Outdoor Mobility Lab', 
     description: 'Dedicated to kinematics, assistive robotics, and dynamic control of robotic arms.',
     members: ['Dr. Ahmad Najmuddin Bin Ibrahim', 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal'],
-    icon: 'fa-drafting-compass'
+    icon: 'fa-drafting-compass',
+    url: 'https://www.drnajmuddin.com/projects/'
+  },
+  {
+    acronym: 'Agronetics Lab',
+    name: 'Agronetics',
+    description: 'Focuses on agricultural technology and smart farming systems.',
+    members: ['Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', 'Dr. Mohd Azraai Bin Mohd Razman', 'Mr. Wan Hasbullah Bin Mohd Isa'],
+    icon: 'fa-seedling',
+    url: 'https://agronetic.net'
   },
   { 
     acronym: 'HTFFM Lab', 
@@ -223,13 +241,6 @@ if (labsContainer) {
     labCard.style.animation = `fadeInUp 0.6s ease-out ${0.2 + delay}s forwards`;
     labCard.style.opacity = '0';
     
-    if (lab.url) {
-      labCard.style.cursor = 'pointer';
-      labCard.addEventListener('click', () => {
-        window.open(lab.url, '_blank');
-      });
-    }
-    
     // Build Dropdown Item
     if (lab.url) {
       labsDropdownHTML += `<a href="${lab.url}" target="_blank">${lab.acronym}</a>`;
@@ -252,6 +263,7 @@ if (labsContainer) {
           <ul class="lab-members-list">
             ${lab.members.map(m => `<li><i class="fas fa-user-tie"></i> ${m}</li>`).join('')}
           </ul>
+          ${lab.url ? `<a href="${lab.url}" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-top: 1rem; display: inline-block;">View this Lab</a>` : ''}
         </div>
       </div>
     `;
@@ -265,7 +277,7 @@ if (labsContainer) {
 const researchers = [
   { name: 'Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', shortName: 'PM Dr. Abdul Aziz', title: 'Head of Cluster', tags: ['P04'], image: '/members/pm-aziz-7.jpg', about: 'Expert in industrial mechatronics, advanced manufacturing, and thermofluid process control.' },
   { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Researcher', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
-  { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', shortName: 'Dr. Najmuddin', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://blog.ump.edu.my/anajmuddin/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
+  { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', shortName: 'Dr. Najmuddin', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://www.drnajmuddin.com/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
   { name: 'Dr. Mohd Azri Hizami Bin Rasid', shortName: 'Dr. Azri', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://sites.google.com/ump.edu.my/mahrasid/home?pli=1', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
   { name: 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal', shortName: 'Dr. Hafiz', title: 'Researcher', tags: ['P03'], image: '/members/hafiz-21.jpg', website: 'https://scholar.google.com/citations?user=z6j75UsAAAAJ&hl=en', about: 'Expertise in CAD design, mechanical design and optimisation, and vehicle steering control.' },
   { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Researcher', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Additive manufacturing, robotics, and design and development for mechatronic systems.' },
