@@ -595,8 +595,8 @@ footer {
     display: none;
   }
   .nav-links::after {
-    content: '\\f054'; /* FontAwesome > arrow */
-    font-family: 'Font Awesome 6 Free';
+    content: '❯';
+    font-size: 1.2rem;
     font-weight: 900;
     position: sticky;
     right: 0;
