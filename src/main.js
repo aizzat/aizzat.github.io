@@ -263,7 +263,7 @@ if (labsContainer) {
           <ul class="lab-members-list">
             ${lab.members.map(m => `<li><i class="fas fa-user-tie"></i> ${m}</li>`).join('')}
           </ul>
-          ${lab.url ? `<a href="${lab.url}" target="_blank" class="btn" style="padding: 0.4rem 1rem; font-size: 0.85rem; margin-top: 1rem; display: inline-block;">View this Lab</a>` : ''}
+          ${lab.url ? `<a href="${lab.url}" target="_blank" class="lab-btn">View this Lab</a>` : ''}
         </div>
       </div>
     `;

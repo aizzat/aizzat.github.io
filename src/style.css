@@ -365,7 +365,7 @@ footer {
 
 .lab-card-3d {
   background-color: transparent;
-  height: 280px;
+  height: 350px;
   perspective: 1000px;
 }
 
@@ -425,6 +425,50 @@ footer {
   color: white;
   transform: rotateY(180deg);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  justify-content: flex-start;
+}
+
+.lab-card-back::-webkit-scrollbar {
+  width: 6px;
+}
+.lab-card-back::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.lab-card-back::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+.lab-card-back::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.lab-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  width: 100%;
+}
+
+.lab-btn:hover {
+  background: #ffffff;
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .lab-card-back h4 {
