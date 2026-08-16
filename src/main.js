@@ -330,6 +330,10 @@ initThreeJS();
 
 // Animate Impact Items on scroll
 function animateValue(obj, start, end, duration, prefix = '', suffix = '', finalText = null) {
+  if (obj.dataset.rafId) {
+    window.cancelAnimationFrame(parseInt(obj.dataset.rafId));
+  }
+  
   let startTimestamp = null;
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
@@ -346,7 +350,7 @@ function animateValue(obj, start, end, duration, prefix = '', suffix = '', final
     obj.innerHTML = prefix + displayVal + suffix;
     
     if (progress < 1) {
-      window.requestAnimationFrame(step);
+      obj.dataset.rafId = window.requestAnimationFrame(step);
     } else {
       if (finalText !== null) {
         obj.innerHTML = finalText;
@@ -355,6 +359,7 @@ function animateValue(obj, start, end, duration, prefix = '', suffix = '', final
         if (end < 10 && textOriginalLength === 2) finalVal = '0' + end.toString();
         obj.innerHTML = prefix + finalVal + suffix;
       }
+      obj.removeAttribute('data-raf-id');
     }
   };
   
@@ -364,7 +369,7 @@ function animateValue(obj, start, end, duration, prefix = '', suffix = '', final
       textOriginalLength = 2;
   }
   
-  window.requestAnimationFrame(step);
+  obj.dataset.rafId = window.requestAnimationFrame(step);
 }
 
 const impactItems = document.querySelectorAll('.impact-item');
@@ -378,7 +383,10 @@ if (impactItems.length > 0) {
         const h3 = entry.target.querySelector('h3');
         if (h3 && !h3.dataset.animated) {
           h3.dataset.animated = "true";
-          const text = h3.innerText;
+          if (!h3.dataset.originalText) {
+            h3.dataset.originalText = h3.innerText;
+          }
+          const text = h3.dataset.originalText;
           let prefix = '';
           let suffix = '';
           let numStr = text;
