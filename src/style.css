@@ -55,6 +55,11 @@ body {
 h1, h2, h3, h4 {
   font-weight: 800;
   line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+b, strong {
+  letter-spacing: 0.5px;
 }
 
 h2 {

@@ -26,7 +26,7 @@ if (arcResearchersContainer) {
     const rId = `arc-researcher-${index}`;
     
     gridHTML += `
-      <div class="researcher-card" id="${rId}">
+      <div class="researcher-card animate-on-scroll" id="${rId}">
         <div class="researcher-img" style="background: url('${bgImage}') center/cover"></div>
         <div class="researcher-info">
           <h4>${r.name}</h4>
@@ -44,4 +44,36 @@ if (arcResearchersContainer) {
   });
   
   arcResearchersContainer.innerHTML = gridHTML;
+}
+
+// Generic scroll animation observer for ARC FTKPM page
+const animateElements = document.querySelectorAll('.animate-on-scroll');
+if (animateElements.length > 0) {
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = entry.target.dataset.animation || 'fadeInUp 0.8s ease-out forwards';
+        entry.target.style.opacity = '1';
+      } else {
+        // Reset animation state so it triggers again on next scroll
+        entry.target.style.animation = 'none';
+        entry.target.style.opacity = '0';
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  animateElements.forEach((el) => {
+    el.style.opacity = '0';
+    
+    // Add staggered delay based on its index among siblings
+    if (!el.dataset.animation) {
+        const parent = el.parentElement;
+        const siblings = Array.from(parent.children).filter(c => c.classList.contains('animate-on-scroll'));
+        const siblingIndex = siblings.indexOf(el);
+        const delay = siblingIndex >= 0 ? siblingIndex * 0.15 : 0;
+        el.dataset.animation = `fadeInUp 0.8s ease-out ${delay}s forwards`;
+    }
+    
+    scrollObserver.observe(el);
+  });
 }

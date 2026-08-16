@@ -160,13 +160,14 @@ document.querySelector('#app').innerHTML = `
           <a href="mailto:maizzat@umpsa.edu.my" style="color: var(--color-primary); font-weight: 600; text-decoration: none; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"><i class="fas fa-envelope" style="margin-right: 8px;"></i>maizzat@umpsa.edu.my</a>
         </div>
         <div class="footer-col">
-          <h4>Industry Partners</h4>
+          <h4>Strategic Partners</h4>
           <div class="partner-logos">
             <img src="/partners/moverobotic.webp" alt="MOVE Robotic">
             <img src="/partners/pixmoving.png" alt="Pix Moving">
             <img src="/partners/aeroground.PNG" alt="Aeroground">
             <img src="/partners/teraju-logo.png" alt="Teraju">
             <img src="/partners/EDMlab.png" alt="EDM Lab">
+            <img src="/partners/DREBAR Trademark - 1.png" alt="Drebar Trademark">
           </div>
         </div>
       </div>
@@ -216,7 +217,7 @@ const labs = [
     description: 'Focuses on agricultural technology and smart farming systems.',
     members: ['Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', 'Dr. Mohd Azraai Bin Mohd Razman', 'Mr. Wan Hasbullah Bin Mohd Isa'],
     icon: 'fa-seedling',
-    url: 'https://agronetic.net'
+    url: 'https://agronetics.net'
   },
   { 
     acronym: 'HTFFM Lab', 
@@ -326,3 +327,108 @@ if(dropdownContainer) dropdownContainer.innerHTML = dropdownHTML;
 import { initThreeJS } from './three-bg.js';
 
 initThreeJS();
+
+// Animate Impact Items on scroll
+function animateValue(obj, start, end, duration, prefix = '', suffix = '', finalText = null) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    
+    // ease out quad
+    const easeProgress = 1 - (1 - progress) * (1 - progress);
+    const current = Math.floor(easeProgress * (end - start) + start);
+    
+    let displayVal = current.toLocaleString();
+    // Keep '03' format
+    if (end < 10 && current < 10 && textOriginalLength === 2) displayVal = '0' + current.toString();
+    
+    obj.innerHTML = prefix + displayVal + suffix;
+    
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      if (finalText !== null) {
+        obj.innerHTML = finalText;
+      } else {
+        let finalVal = end.toLocaleString();
+        if (end < 10 && textOriginalLength === 2) finalVal = '0' + end.toString();
+        obj.innerHTML = prefix + finalVal + suffix;
+      }
+    }
+  };
+  
+  // store original length of number to preserve padding like 03
+  let textOriginalLength = end.toString().length;
+  if (obj.innerText.replace(/[^0-9]/g, '').length === 2 && end < 10) {
+      textOriginalLength = 2;
+  }
+  
+  window.requestAnimationFrame(step);
+}
+
+const impactItems = document.querySelectorAll('.impact-item');
+if (impactItems.length > 0) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = entry.target.dataset.animation;
+        entry.target.style.opacity = '1';
+        
+        const h3 = entry.target.querySelector('h3');
+        if (h3 && !h3.dataset.animated) {
+          h3.dataset.animated = "true";
+          const text = h3.innerText;
+          let prefix = '';
+          let suffix = '';
+          let numStr = text;
+          let finalText = null;
+          let endNum;
+          
+          if (text === 'RM3M+') {
+            endNum = 3000000;
+            prefix = 'RM';
+            suffix = '+';
+            finalText = 'RM3M+';
+          } else {
+            if (text.startsWith('RM')) {
+              prefix = 'RM';
+              numStr = numStr.replace('RM', '');
+            }
+            if (numStr.endsWith('M+')) {
+              suffix = 'M+';
+              numStr = numStr.replace('M+', '');
+            } else if (numStr.endsWith('+')) {
+              suffix = '+';
+              numStr = numStr.replace('+', '');
+            }
+            endNum = parseInt(numStr.replace(/,/g, ''), 10);
+          }
+          
+          if (!isNaN(endNum)) {
+            const delay = parseFloat(entry.target.dataset.delay) * 1000 || 0;
+            // set initial to 0
+            h3.innerHTML = prefix + (endNum < 10 && text.replace(/[^0-9]/g, '').length === 2 ? '00' : '0') + suffix;
+            setTimeout(() => {
+              animateValue(h3, 0, endNum, 2000, prefix, suffix, finalText);
+            }, delay + 200); // add 200ms after fade starts
+          }
+        }
+      } else {
+        // Reset animation state so it triggers again on next scroll
+        entry.target.style.animation = 'none';
+        entry.target.style.opacity = '0';
+        const h3 = entry.target.querySelector('h3');
+        if (h3) h3.dataset.animated = "";
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  impactItems.forEach((el, index) => {
+    el.style.opacity = '0';
+    el.dataset.delay = (index * 0.15).toString();
+    el.dataset.animation = `fadeInUp 0.8s ease-out ${index * 0.15}s forwards`;
+    observer.observe(el);
+  });
+}
+
