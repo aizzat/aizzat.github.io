@@ -574,15 +574,46 @@ footer {
   .nav-container {
     flex-direction: column;
     padding: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+  .navbar {
+    position: relative; /* Add a wrapper for the fade effect */
   }
   .nav-links {
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-links::after {
+    content: '\\f054'; /* FontAwesome > arrow */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: sticky;
+    right: 0;
+    color: var(--color-primary);
+    background: rgba(10, 10, 10, 0.9);
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
   }
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .hero h1 {
+    font-size: 3rem; /* Make big logo slightly smaller on mobile to avoid overlap */
+    margin-top: 2rem;
   }
 }
 
