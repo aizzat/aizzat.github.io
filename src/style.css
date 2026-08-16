@@ -626,6 +626,45 @@ footer {
     display: block;
     width: 100%;
   }
+  .nav-links-scroll {
+    display: flex !important;
+    gap: 1.5rem !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    flex-direction: row !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    padding-bottom: 0.5rem !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
+  .nav-links-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-links-scroll::after {
+    content: '❯';
+    font-size: 1.2rem;
+    font-weight: 900;
+    position: sticky;
+    right: 0;
+    color: var(--color-primary);
+    background: rgba(10, 10, 10, 0.9);
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+  .nav-links-scroll li {
+    width: auto !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  .nav-links-scroll a {
+    white-space: nowrap !important;
+  }
   .hero h1 {
     font-size: 3rem; /* Make big logo slightly smaller on mobile to avoid overlap */
     margin-top: 2rem;
