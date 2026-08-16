@@ -43,6 +43,9 @@ import{t as e}from"./three-bg-CKTrwQbf.js";document.querySelector(`#app`).innerH
   <section id="pillars">
     <div class="container">
       <h2>The Four Core Research Pillars</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Our research is organized around four interconnected pillars, driving innovation across autonomous systems, robotics, and mechatronics.
+      </p>
       <div class="pillars-grid">
       <div class="pillar-card" id="pillar-p01">
         <h3><span class="tag" style="margin-right: 0.5rem">P01</span>Autonomous Mobility & Vehicle Dynamics</h3>
@@ -84,6 +87,9 @@ import{t as e}from"./three-bg-CKTrwQbf.js";document.querySelector(`#app`).innerH
   <section id="laboratories">
     <div class="container">
       <h2>Specialized Laboratories</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Each lab is equipped to support cutting-edge research and development across our core focus areas.
+      </p>
       <div class="laboratories-grid" id="labs-container">
         <!-- Labs injected via JS -->
       </div>
@@ -105,6 +111,9 @@ import{t as e}from"./three-bg-CKTrwQbf.js";document.querySelector(`#app`).innerH
   <section id="impact" class="impact">
     <div class="container">
       <h2>Impact At A Glance</h2>
+      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: -10px auto 30px; font-size: 1.05rem;">
+        Highlights of our research cluster's achievements, funding, and contributions to the field.
+      </p>
       <div class="impact-grid">
         <div class="impact-item">
           <h3>RM3M+</h3>
