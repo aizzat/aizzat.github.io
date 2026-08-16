@@ -5,7 +5,12 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 document.querySelector('#app').innerHTML = `
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="#home" class="logo">ARMS FTKPM</a>
+      <div class="nav-header">
+        <a href="#home" class="logo">ARMS FTKPM</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
       <ul class="nav-links">
         <li class="dropdown">
           <a href="#pillars" class="dropbtn">Pillars <i class="fas fa-caret-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
@@ -439,4 +444,21 @@ if (impactItems.length > 0) {
     observer.observe(el);
   });
 }
+
+// Mobile Menu Toggle Logic
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (mobileMenuToggle && navLinks) {
+  mobileMenuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+}
+
 
