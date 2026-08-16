@@ -34,7 +34,7 @@ import{t as e}from"./three-bg-B-cAsjrn.js";document.querySelector(`#app`).innerH
     <div class="container">
       <h1 data-text="ARMS FTKPM">ARMS FTKPM</h1>
       <p style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary); margin-top: -0.5rem; margin-bottom: 0.5rem; animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0;">Autonomous, Robotic & Mechatronics System</p>
-      <p style="font-size: 0.9rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.4s forwards; opacity: 0;">A research cluster under FTKPM UMPSA</p>
+      <p style="font-size: 0.9rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.4s forwards; opacity: 0;">A RESEARCH CLUSTER UNDER FACULTY OF MANUFACTURING AND MECHATRONIC ENGINEERING TECHNOLOGY (FTKPM) UNIVERSITI MALAYSIA PAHANG AL-SULTAN ABDULLAH (UMPSA)</p>
       <p>Innovating next-generation autonomous systems, robotics, and smart industrial mechatronics.</p>
       <a href="#pillars" class="btn">Explore Our Research</a>
     </div>
