@@ -1,4 +1,4 @@
-import{t as e}from"./three-bg-DFHkssjX.js";document.querySelector(`#app`).innerHTML=`
+import{t as e}from"./three-bg-CZKTmHxm.js";document.querySelector(`#app`).innerHTML=`
   <nav class="navbar">
     <div class="container nav-container">
       <a href="#home" class="logo">ARMS FTKPM</a>
