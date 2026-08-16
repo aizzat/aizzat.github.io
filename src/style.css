@@ -600,9 +600,6 @@ footer {
   .mobile-menu-toggle {
     display: block;
   }
-  .navbar {
-    position: relative; /* Add a wrapper for the fade effect */
-  }
   .nav-links {
     display: none;
     flex-direction: column;
