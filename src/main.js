@@ -183,7 +183,8 @@ const labs = [
     name: 'Innovative, Manufacturing, Mechatronics', 
     description: 'Focuses on mechatronic system design, smart manufacturing, and AI integration.',
     members: ['Dr. Mohd Azraai Bin Mohd Razman', 'Mr. Wan Hasbullah Bin Mohd Isa'],
-    icon: 'fa-microchip'
+    icon: 'fa-microchip',
+    url: 'https://imamslab.umpsa.edu.my/index.php/en/'
   },
   { 
     acronym: 'EMDL Lab', 
