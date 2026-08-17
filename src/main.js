@@ -206,7 +206,8 @@ const labs = [
     name: 'Electromechanical Drivetrain Laboratory', 
     description: 'Research in electric motor drives, fault detection, and electromechanical actuators.',
     members: ['Dr. Mohd Azri Hizami Bin Rasid'],
-    icon: 'fa-cogs'
+    icon: 'fa-cogs',
+    url: 'https://azrihizami.github.io/emdlab-student-opportunities/'
   },
   { 
     acronym: 'OM Lab', 
@@ -284,7 +285,7 @@ const researchers = [
   { name: 'Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', shortName: 'PM Dr. Abdul Aziz', title: 'Head of Cluster', tags: ['P04'], image: '/members/pm-aziz-7.jpg', about: 'Expert in industrial mechatronics, advanced manufacturing, and thermofluid process control.' },
   { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Researcher', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
   { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', shortName: 'Dr. Najmuddin', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://www.drnajmuddin.com/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
-  { name: 'Dr. Mohd Azri Hizami Bin Rasid', shortName: 'Dr. Azri', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://sites.google.com/ump.edu.my/mahrasid/home?pli=1', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
+  { name: 'Dr. Mohd Azri Hizami Bin Rasid', shortName: 'Dr. Azri', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://azrihizami.github.io/emdlab-student-opportunities/', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
   { name: 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal', shortName: 'Dr. Hafiz', title: 'Researcher', tags: ['P03'], image: '/members/hafiz-21.jpg', website: 'https://scholar.google.com/citations?user=z6j75UsAAAAJ&hl=en', about: 'Expertise in CAD design, mechanical design and optimisation, and vehicle steering control.' },
   { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Researcher', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Additive manufacturing, robotics, and design and development for mechatronic systems.' },
   { name: 'Dr. Mohd Azraai Bin Mohd Razman', shortName: 'Dr. Azraai', title: 'Researcher', tags: ['P04'], image: '/members/dr-azraai-5.jpg', website: 'https://imamslab.umpsa.edu.my/index.php/en/about-us/people', about: 'Specializes in smart systems, mechatronic design, and sustainable manufacturing processes.' },
