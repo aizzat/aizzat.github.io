@@ -377,6 +377,94 @@
         flex-wrap: wrap;
         gap: 0.5rem;
       }
+
+      /* ── Efficient Coding Flip Cards ── */
+      .flip-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .flip-card {
+        perspective: 1000px;
+        height: 220px;
+        cursor: pointer;
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .flip-card:hover .flip-card-inner,
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        inset: 0;
+        border-radius: var(--border-radius);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.75rem 1.25rem;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .flip-card-front {
+        background: var(--color-surface);
+        backdrop-filter: blur(12px);
+      }
+      .flip-card-back {
+        background: rgba(0, 162, 162, 0.12);
+        border-color: var(--color-primary);
+        transform: rotateY(180deg);
+        justify-content: flex-start;
+        padding-top: 1.5rem;
+        text-align: left;
+        overflow: hidden;
+      }
+      .flip-card-front .step-number {
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: 0.75rem;
+      }
+      .flip-card-front .step-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.35;
+        margin-top: 0.75rem;
+      }
+      .flip-card-front .step-hint {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.4);
+        margin-top: 0.5rem;
+      }
+      .flip-card-back .back-title {
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.5px;
+      }
+      .flip-card-back p {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.82);
+        line-height: 1.6;
+        margin: 0;
+      }
+      @media (max-width: 600px) {
+        .flip-card { height: 200px; }
+      }
     </style>
   </head>
   <body>
@@ -722,6 +810,79 @@
           
         </div>
 
+        <!-- Efficient Coding — What You'll Learn -->
+        <div style="margin-top: 4rem;">
+          <h3 style="text-align: center; font-size: 1.2rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;">Efficient Coding with Agentic AI</h3>
+          <p style="text-align: center; color: var(--color-text-muted); font-size: 0.95rem; margin: 0 auto 1.5rem; max-width: 640px;">Hover (or tap on mobile) each card to reveal the step details.</p>
+          <div class="flip-cards-grid">
+
+            <!-- Step 1 -->
+            <div class="flip-card" role="button" aria-label="Set Clear Boundaries and Goals">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <i class="fas fa-crosshairs" style="font-size: 2rem; color: var(--color-primary);"></i>
+                  <div class="step-number">Step 01</div>
+                  <div class="step-title">Set Clear Boundaries & Goals</div>
+                  <div class="step-hint">tap to reveal →</div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-title">Set Clear Boundaries & Goals</div>
+                  <p>Define exactly what your coding agent is allowed to do—such as finding bugs, writing tests, or drafting basic functions—and provide it with strict instructions to keep it focused on the right tasks.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flip-card" role="button" aria-label="Integrate with Your Workspace">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <i class="fas fa-plug" style="font-size: 2rem; color: var(--color-primary);"></i>
+                  <div class="step-number">Step 02</div>
+                  <div class="step-title">Integrate with Your Workspace</div>
+                  <div class="step-hint">tap to reveal →</div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-title">Integrate with Your Workspace</div>
+                  <p>Connect the agent to your codebase safely so it can read existing files and understand the context of your project without having the power to permanently delete or overwrite your work.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flip-card" role="button" aria-label="Establish an Approval Checkpoint">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <i class="fas fa-user-check" style="font-size: 2rem; color: var(--color-primary);"></i>
+                  <div class="step-number">Step 03</div>
+                  <div class="step-title">Establish an Approval Checkpoint</div>
+                  <div class="step-hint">tap to reveal →</div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-title">Establish an Approval Checkpoint</div>
+                  <p>Set up a mandatory "human-in-the-loop" review process where the agent pauses and waits for you to inspect and approve its code suggestions before anything is officially applied.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flip-card" role="button" aria-label="Monitor and Refine">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--color-primary);"></i>
+                  <div class="step-number">Step 04</div>
+                  <div class="step-title">Monitor and Refine</div>
+                  <div class="step-hint">tap to reveal →</div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="back-title">Monitor and Refine</div>
+                  <p>Launch the agent in an isolated testing environment first, tracking its success rate and adjusting its core instructions over time to improve how well it writes and executes code.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <div style="text-align: center; margin-top: 4rem;">
           <a href="mailto:maizzat@umpsa.edu.my" style="display: inline-flex; align-items: center; background: var(--color-primary); color: #000; font-weight: 700; padding: 12px 30px; font-size: 1.1rem; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,162,162,0.4); text-decoration: none; transition: 0.3s ease;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
             <i class="fas fa-envelope" style="margin-right: 10px;"></i>
@@ -872,6 +1033,13 @@
         
         document.querySelectorAll('.timeline-item, .phase-bar').forEach(el => {
           observer.observe(el);
+        });
+
+        // Tap-to-flip for touch devices
+        document.querySelectorAll('.flip-card').forEach(card => {
+          card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+          });
         });
       });
     </script>
