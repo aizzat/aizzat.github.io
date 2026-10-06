@@ -5,8 +5,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        arcftkpm: resolve(__dirname, 'arcftkpm-lab.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        arcftkpm: resolve(import.meta.dirname, 'arcftkpm-lab.html'),
+        paris: resolve(import.meta.dirname, 'paris-motor-show.html'),
       },
     },
   },

@@ -1,4 +1,5 @@
 import { initThreeJS } from './three-bg.js';
+import { arcNewsCategories, arcNewsItems } from './data/arcNewsData.js';
 
 // Initialize the 3D Holographic Background
 initThreeJS();
@@ -46,7 +47,154 @@ if (arcResearchersContainer) {
   arcResearchersContainer.innerHTML = gridHTML;
 }
 
-// Scroll animations have been removed to improve mobile scrolling smoothness
+// ── Populate & Filter ARC FTKPM Research Updates & News ──
+const arcNewsFiltersContainer = document.querySelector('#arc-news-filters');
+const arcNewsGridContainer = document.querySelector('#arc-news-grid');
+
+let activeNewsCategory = 'all';
+
+function renderNewsFilters() {
+  if (!arcNewsFiltersContainer) return;
+  arcNewsFiltersContainer.innerHTML = arcNewsCategories.map(cat => `
+    <button type="button" class="news-filter-btn ${cat.id === activeNewsCategory ? 'active' : ''}" data-category="${cat.id}">
+      <i class="fas ${cat.icon}"></i>
+      <span>${cat.label}</span>
+    </button>
+  `).join('');
+
+  arcNewsFiltersContainer.querySelectorAll('.news-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeNewsCategory = btn.dataset.category;
+      renderNewsFilters();
+      renderNewsCards();
+    });
+  });
+}
+
+// Global modal trigger for TikTok Embed
+window.openTikTokModal = function(citeUrl, videoId) {
+  const modal = document.getElementById('newsVideoModal');
+  const container = document.getElementById('newsVideoContainer');
+  if (!modal || !container) return;
+  
+  container.innerHTML = `
+    <blockquote class="tiktok-embed" cite="${citeUrl}" data-video-id="${videoId}" style="max-width: 605px; min-width: 325px; margin: 0 auto;">
+      <section>
+        <a target="_blank" title="@draizzat" href="https://www.tiktok.com/@draizzat?refer=embed">@draizzat</a>
+        <p>ARC FTKPM team doing R&D development for new upcoming autonomous robot with our partner Pix Moving.</p>
+        <a target="_blank" title="♬ Whatcha Gonna Do - The Valdons" href="https://www.tiktok.com/music/Whatcha-Gonna-Do-7393076794599835649?refer=embed">♬ Whatcha Gonna Do - The Valdons</a>
+      </section>
+    </blockquote>
+  `;
+
+  // Dynamically re-trigger TikTok embed script
+  const oldScript = document.getElementById('tiktok-embed-dynamic-script');
+  if (oldScript) oldScript.remove();
+  const script = document.createElement('script');
+  script.id = 'tiktok-embed-dynamic-script';
+  script.src = 'https://www.tiktok.com/embed.js';
+  script.async = true;
+  document.body.appendChild(script);
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeNewsVideoModal = function(event) {
+  if (event && event.target !== event.currentTarget && !event.target.classList.contains('news-modal-close')) {
+    return;
+  }
+  const modal = document.getElementById('newsVideoModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  const container = document.getElementById('newsVideoContainer');
+  if (container) container.innerHTML = '';
+};
+
+function renderNewsCards() {
+  if (!arcNewsGridContainer) return;
+
+  const filtered = activeNewsCategory === 'all'
+    ? arcNewsItems
+    : arcNewsItems.filter(item => item.category === activeNewsCategory);
+
+  if (filtered.length === 0) {
+    arcNewsGridContainer.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-muted);">
+        <i class="fas fa-folder-open" style="font-size: 2.2rem; margin-bottom: 1rem; display: block; opacity: 0.4;"></i>
+        <p style="font-size: 1.05rem;">No updates currently in this category.</p>
+      </div>
+    `;
+    return;
+  }
+
+  arcNewsGridContainer.innerHTML = filtered.map(item => `
+    <article class="news-card ${item.featured ? 'featured-card' : ''}" id="${item.id}">
+      <div class="news-thumb-wrapper" onclick="${item.isVideo ? `window.openTikTokModal('${item.videoCite}', '${item.videoId}')` : `window.openLightbox && window.openLightbox('${item.lightboxImage || item.image}')`}" title="${item.isVideo ? 'Click to watch R&D Video' : 'Click to expand full image'}">
+        <img src="${item.image}" alt="${item.title}" class="news-thumb" loading="lazy" />
+        <span class="news-badge ${item.badgeClass || ''}">${item.badge}</span>
+        ${item.isVideo ? `
+          <div class="news-play-icon"><i class="fas fa-play"></i></div>
+        ` : `
+          <button type="button" class="news-expand-btn" aria-label="Expand image">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        `}
+      </div>
+      <div class="news-card-body">
+        <div class="news-meta">
+          <span class="news-date"><i class="far fa-calendar-alt"></i> ${item.date}</span>
+          <span class="news-source"><i class="fas fa-landmark"></i> ${item.source}</span>
+        </div>
+        <h3 class="news-title">${item.title}</h3>
+        ${item.subtitle ? `<div class="news-subtitle">${item.subtitle}</div>` : ''}
+        <p class="news-summary">${item.summary}</p>
+        
+        <div class="news-tags">
+          ${(item.tags || []).map(t => `<span class="news-tag">#${t}</span>`).join('')}
+        </div>
+        
+        <div class="news-actions">
+          ${item.isVideo ? `
+            <button type="button" class="news-btn-primary" onclick="window.openTikTokModal('${item.videoCite}', '${item.videoId}')">
+              <i class="fab fa-tiktok"></i>
+              <span>${item.actionText || 'Watch R&D Reel'}</span>
+            </button>
+            <a href="${item.externalUrl}" target="_blank" rel="noopener noreferrer" class="news-btn-secondary">
+              <i class="fas fa-external-link-alt"></i>
+              <span>Open in TikTok</span>
+            </a>
+          ` : `
+            ${item.externalUrl ? `
+              <a href="${item.externalUrl}" target="_blank" rel="noopener noreferrer" class="news-btn-primary">
+                <span>${item.actionText || 'Read Story'}</span>
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            ` : ''}
+            ${item.hasClipping ? `
+              <button type="button" class="news-btn-secondary" onclick="window.openLightbox && window.openLightbox('${item.clippingImage || item.image}')">
+                <i class="fas fa-newspaper"></i>
+                <span>Press Clipping</span>
+              </button>
+            ` : (item.lightboxImage && !item.externalUrl ? `
+              <button type="button" class="news-btn-secondary" onclick="window.openLightbox && window.openLightbox('${item.lightboxImage}')">
+                <i class="fas fa-image"></i>
+                <span>${item.actionText || 'View Media'}</span>
+              </button>
+            ` : '')}
+          `}
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+// Initialize News Section if elements exist
+if (arcNewsFiltersContainer || arcNewsGridContainer) {
+  renderNewsFilters();
+  renderNewsCards();
+}
 
 // Mobile Menu Toggle Logic
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -63,3 +211,29 @@ if (mobileMenuToggle && navLinks) {
     });
   });
 }
+
+// ── Paris Motor Show 2026 Interactive Tab Switcher ──
+const parisTabButtons = document.querySelectorAll('.paris-tab-btn');
+const parisTabPanes = document.querySelectorAll('.paris-tab-pane');
+
+if (parisTabButtons.length > 0) {
+  parisTabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.dataset.parisTab;
+      
+      parisTabButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      parisTabPanes.forEach(pane => pane.classList.remove('active'));
+      
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      const targetPane = document.getElementById(`paris-pane-${targetTab}`);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+}
+
