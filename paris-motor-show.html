@@ -1232,11 +1232,14 @@
         padding: 6px;
       }
 
+      /* ── Comprehensive Responsive Breakpoints ── */
       @media (max-width: 992px) {
         .partner-cards-grid { grid-template-columns: 1fr; }
         .synergy-cards-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-        .paris-hero h1 { font-size: 2.5rem; }
-        .showcase-grid { grid-template-columns: 1fr; padding: 1.5rem; }
+        .paris-hero h1 { font-size: 2.6rem; }
+        .showcase-grid { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; }
+        .showcase-media { width: 100%; }
+        .media-frame { max-width: 100%; }
         .mobile-menu-toggle { display: block; }
         .paris-nav-links {
           display: none;
@@ -1253,6 +1256,218 @@
         }
         .paris-nav-links.active {
           display: flex;
+        }
+        .specs-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .rnd-pillars-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          font-size: 0.95rem;
+        }
+        section.page-section {
+          padding: 4rem 1rem;
+        }
+        .nav-container-paris {
+          padding: 0 1rem;
+        }
+        .paris-logo-text {
+          font-size: 1.1rem;
+        }
+        .paris-hero {
+          padding: 6.5rem 1rem 3.5rem;
+          min-height: auto;
+        }
+        .paris-hero h1 {
+          font-size: 2.1rem;
+          line-height: 1.2;
+        }
+        .hero-eyebrow {
+          font-size: 0.78rem;
+          padding: 6px 14px;
+          gap: 6px;
+        }
+        .paris-hero .hero-partner-tag {
+          font-size: 1.05rem;
+          line-height: 1.4;
+          margin-bottom: 1rem;
+        }
+        .paris-hero p.hero-lead {
+          font-size: 0.98rem;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+        .paris-metrics-bar {
+          grid-template-columns: 1fr;
+          gap: 0.9rem;
+          margin-bottom: 2rem;
+        }
+        .metric-box {
+          padding: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          text-align: left;
+        }
+        .metric-box i {
+          margin-bottom: 0;
+          font-size: 1.8rem;
+          flex-shrink: 0;
+        }
+        .hero-actions {
+          flex-direction: column;
+          width: 100%;
+          gap: 0.8rem;
+        }
+        .hero-actions .btn-paris-solid,
+        .hero-actions .btn-paris-outline {
+          width: 100%;
+          justify-content: center;
+          padding: 12px 18px;
+          font-size: 0.92rem;
+        }
+        .partner-banner-tag {
+          font-size: 0.75rem;
+          letter-spacing: 1px;
+          padding: 5px 12px;
+          display: inline-block;
+        }
+        .paris-partner-card {
+          padding: 1.5rem 1.1rem;
+        }
+        .section-header-center {
+          margin-bottom: 2.2rem;
+        }
+        .section-title {
+          font-size: 1.75rem;
+        }
+        .section-subtitle {
+          font-size: 0.95rem;
+        }
+        .showcase-grid {
+          padding: 1.5rem 1rem;
+          border-radius: 18px;
+        }
+        .showcase-content h3 {
+          font-size: 1.45rem;
+        }
+        .feature-bullets li {
+          font-size: 0.9rem;
+        }
+        .media-img-wrap {
+          height: 220px;
+        }
+        .specs-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .spec-card {
+          padding: 1.3rem 1.1rem;
+        }
+        .rnd-pillars-grid {
+          grid-template-columns: 1fr;
+          gap: 1.1rem;
+        }
+        .rnd-pillar-card {
+          padding: 1.4rem 1.1rem;
+        }
+        .synergy-card {
+          padding: 1.5rem 1.1rem;
+        }
+        .synergy-list li {
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+        .synergy-list li i {
+          margin-top: 0;
+        }
+        .meeting-card {
+          padding: 2rem 1.2rem;
+          border-radius: 18px;
+        }
+        .contact-details-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .footer-partners-bar {
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .footer-links {
+          flex-direction: column;
+          gap: 0.8rem;
+          align-items: center;
+        }
+
+        /* ── Modal Mobile Optimization ── */
+        .robobus-spec-modal {
+          padding: 0.75rem;
+        }
+        .robobus-spec-modal-container {
+          padding: 1.5rem 1rem;
+          border-radius: 16px;
+          max-height: 94vh;
+        }
+        .spec-modal-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.8rem;
+          margin-bottom: 1.2rem;
+          padding-bottom: 1rem;
+        }
+        .spec-modal-close-btn {
+          top: 12px;
+          right: 12px;
+          width: 34px;
+          height: 34px;
+          font-size: 1.1rem;
+        }
+        .spec-modal-title-wrap h3 {
+          font-size: 1.4rem;
+        }
+        .spec-quick-grid {
+          grid-template-columns: 1fr;
+          gap: 0.7rem;
+        }
+        .spec-modal-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .spec-table-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 3px;
+          padding: 8px 10px;
+        }
+        .spec-table-label,
+        .spec-table-val {
+          text-align: left;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .paris-hero h1 {
+          font-size: 1.85rem;
+        }
+        .hero-eyebrow {
+          font-size: 0.72rem;
+          padding: 5px 12px;
+        }
+        .section-title {
+          font-size: 1.5rem;
+        }
+        .btn-paris-solid,
+        .btn-paris-outline {
+          font-size: 0.88rem;
+          padding: 10px 14px;
+        }
+        .media-img-wrap {
+          height: 190px;
         }
       }
 
