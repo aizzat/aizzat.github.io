@@ -1,6 +1,6 @@
 import { initThreeJS } from './three-bg.js';
 
-// Initialize the 3D Holographic Background
+// Initialize the original ARC FTKPM 3D Background (Mobile Robot)
 initThreeJS();
 
 // Mobile Navigation Toggle
