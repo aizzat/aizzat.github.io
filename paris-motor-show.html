@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UMPSA at Paris Motor Show 2026 | ARC FTKPM & PIX Moving</title>
     <meta name="description" content="ARC FTKPM represents Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA) at Mondial de l’Auto – Paris 2026 (12–18 October, Hall 7.1 · Stand C01) with PIX Moving. Featuring Robobus Malaysia and DREBAR autonomous robotics R&D." />
+    <meta property="og:image" content="/arcftkpm-resources/Pix Moving Robobus.png" />
+    <meta property="twitter:image" content="/arcftkpm-resources/Pix%20Moving%20Robobus.png" />
+    <meta property="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
@@ -24,6 +27,21 @@
         font-family: 'Outfit', sans-serif;
         line-height: 1.6;
         overflow-x: hidden;
+      }
+
+      /* ── 3D Holographic Canvas Layer ── */
+      #canvas-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .paris-hero, section.page-section, footer {
+        position: relative;
+        z-index: 1;
       }
 
       /* ── Top Navigation Bar ── */
@@ -118,7 +136,7 @@
         justify-content: center;
         text-align: center;
         padding: 8rem 1.5rem 5rem;
-        background: radial-gradient(circle at 50% 25%, rgba(0, 162, 162, 0.22) 0%, rgba(7, 9, 14, 0.92) 70%);
+        background: radial-gradient(circle at 50% 25%, rgba(0, 162, 162, 0.2) 0%, rgba(7, 9, 14, 0.72) 65%, rgba(7, 9, 14, 0.9) 100%);
       }
       .paris-hero-container {
         max-width: 1050px;
@@ -312,7 +330,7 @@
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
         gap: 3rem;
-        align-items: center;
+        align-items: start;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 24px;
@@ -358,6 +376,14 @@
       .showcase-media {
         display: flex;
         justify-content: center;
+        width: 100%;
+      }
+      .showcase-media-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+        width: 100%;
+        max-width: 460px;
       }
       .media-frame {
         width: 100%;
@@ -402,6 +428,23 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s ease;
+      }
+      .media-img-wrap.contain-fit {
+        height: 380px;
+        background: radial-gradient(circle at center, rgba(0, 162, 162, 0.12) 0%, #030812 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+      }
+      .media-img-wrap.contain-fit img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      .media-img-wrap.contain-fit:hover img {
+        transform: scale(1.03);
       }
       .media-img-wrap:hover img {
         transform: scale(1.08);
@@ -1360,6 +1403,9 @@
         .media-img-wrap {
           height: 220px;
         }
+        .media-img-wrap.contain-fit {
+          height: 340px;
+        }
         .specs-grid {
           grid-template-columns: 1fr;
           gap: 1rem;
@@ -1467,6 +1513,9 @@
         }
         .media-img-wrap {
           height: 190px;
+        }
+        .media-img-wrap.contain-fit {
+          height: 290px;
         }
       }
 
@@ -1723,15 +1772,41 @@
           </div>
 
           <div class="showcase-media">
-            <div class="media-frame">
-              <span class="media-tag-float" style="background: var(--color-accent-gold); color: #000;">Robobus Malaysia</span>
-              <div class="media-img-wrap" onclick="window.openRobobusSpecModal()">
-                <img src="/arcftkpm-resources/news/pixmoving-robobus.png" alt="PIX Moving Robobus" />
-                <div class="media-hover-overlay"><i class="fas fa-sliders-h"></i> View Technical Specs</div>
+            <div class="showcase-media-stack">
+              <!-- Featured Card 1: Featured Vehicle -->
+              <div class="media-frame" style="border-color: rgba(255, 213, 0, 0.45); box-shadow: 0 16px 40px rgba(0, 162, 162, 0.22);">
+                <span class="media-tag-float" style="background: var(--color-accent-gold); color: #000; font-weight: 800;">
+                  <i class="fas fa-star" style="margin-right: 4px;"></i> Featured Vehicle
+                </span>
+                <div class="media-img-wrap" onclick="window.openLightbox('/arcftkpm-resources/Pix Moving Robobus.png')" title="Click to view full high-resolution image">
+                  <img src="/arcftkpm-resources/Pix Moving Robobus.png" alt="PIX Moving Robobus Featured Autonomous Shuttle" />
+                  <div class="media-hover-overlay"><i class="fas fa-search-plus"></i> View Full Image</div>
+                </div>
+                <div class="media-caption-box">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem; gap: 8px;">
+                    <h4 style="margin: 0; font-size: 1.15rem; color: #fff;">PIX Moving Robobus</h4>
+                    <span style="font-size: 0.72rem; color: var(--color-accent-gold); background: rgba(255, 213, 0, 0.12); padding: 3px 8px; border-radius: 6px; font-weight: 700; white-space: nowrap;">L4 Shuttle</span>
+                  </div>
+                  <p>Featured autonomous multi-design shuttle platform exhibited at Mondial de l’Auto · Paris 2026.</p>
+                </div>
               </div>
-              <div class="media-caption-box">
-                <h4>Robobus Autonomous Shuttle</h4>
-                <p>Autonomous mobile space powered by PIX Skateboard Chassis and ARC FTKPM navigation integration.</p>
+
+              <!-- Featured Card 2: Robobus Malaysia Poster (Contained, Completely Uncut) -->
+              <div class="media-frame">
+                <span class="media-tag-float" style="background: var(--color-primary-teal); color: #000; font-weight: 800;">
+                  <i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i> Robobus Malaysia
+                </span>
+                <div class="media-img-wrap contain-fit" onclick="window.openLightbox('/arcftkpm-resources/news/robobusmalaysia.png')" title="Click to view full poster">
+                  <img src="/arcftkpm-resources/news/robobusmalaysia.png" alt="PIX Moving Robobus Malaysia Deployment" />
+                  <div class="media-hover-overlay"><i class="fas fa-search-plus"></i> View Full Poster</div>
+                </div>
+                <div class="media-caption-box">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem; gap: 8px;">
+                    <h4 style="margin: 0; font-size: 1.15rem; color: #fff;">Robobus Coming to Malaysia</h4>
+                    <span style="font-size: 0.72rem; color: var(--color-primary-teal); background: rgba(0, 162, 162, 0.15); padding: 3px 8px; border-radius: 6px; font-weight: 700; white-space: nowrap;">National Pilot</span>
+                  </div>
+                  <p>National pilot trials, tropical weather sensor tuning &amp; campus route operations led by UMPSA.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -2142,8 +2217,8 @@
         <div class="spec-modal-grid">
           <!-- Col 1: Platform Image & Quick Overview -->
           <div class="spec-modal-image-col">
-            <div class="spec-modal-img-box">
-              <img src="/arcftkpm-resources/news/pixmoving-robobus.png" alt="Robobus Platform Architecture" />
+            <div class="spec-modal-img-box" style="cursor: pointer;" onclick="window.openLightbox('/arcftkpm-resources/Pix Moving Robobus.png')" title="Click to expand high-resolution view">
+              <img src="/arcftkpm-resources/Pix Moving Robobus.png" alt="PIX Moving Robobus Platform Architecture" />
             </div>
             <div style="background: rgba(0, 162, 162, 0.08); border: 1px solid rgba(0, 162, 162, 0.3); border-radius: 12px; padding: 1.1rem;">
               <strong style="color: #00F3FF; font-size: 0.92rem; display: block; margin-bottom: 4px;">
