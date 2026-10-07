@@ -196,6 +196,151 @@
         line-height: 1.7;
       }
 
+      /* ── Hero Cinematic Video Showcase ── */
+      .paris-hero-video-showcase {
+        max-width: 960px;
+        width: 100%;
+        margin: 2.2rem auto 3.2rem;
+        position: relative;
+        z-index: 5;
+      }
+      .hero-video-glow-backdrop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        height: 90%;
+        background: radial-gradient(circle, rgba(0, 162, 162, 0.45) 0%, rgba(237, 41, 57, 0.22) 50%, transparent 75%);
+        filter: blur(50px);
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.85;
+        animation: heroPulseGlow 4s ease-in-out infinite alternate;
+      }
+      @keyframes heroPulseGlow {
+        0% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.65; }
+        100% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.95; }
+      }
+      .hero-video-frame {
+        background: rgba(10, 14, 22, 0.94);
+        border: 1px solid rgba(0, 162, 162, 0.55);
+        border-radius: 20px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 162, 162, 0.25);
+        overflow: hidden;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition: all 0.35s ease;
+      }
+      .hero-video-frame:hover {
+        border-color: var(--color-accent-gold);
+        box-shadow: 0 30px 75px rgba(0, 0, 0, 0.95), 0 0 50px rgba(255, 213, 0, 0.28);
+      }
+      .hero-video-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.85rem 1.4rem;
+        background: rgba(255, 255, 255, 0.035);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .hero-video-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(237, 41, 57, 0.18);
+        border: 1px solid rgba(237, 41, 57, 0.45);
+        color: #ff5252;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
+      .hero-video-badge .live-dot {
+        width: 8px;
+        height: 8px;
+        background: #ff5252;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #ff5252;
+        animation: pulseCode 1.2s infinite alternate;
+      }
+      .hero-video-partners {
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+      }
+      .hero-video-player-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #000;
+      }
+      .hero-video-player-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      .hero-video-bottombar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.4rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .hero-video-caption {
+        text-align: left;
+      }
+      .hero-video-caption h4 {
+        margin: 0 0 3px 0;
+        font-size: 1.05rem;
+        color: #fff;
+        font-weight: 700;
+      }
+      .hero-video-caption p {
+        margin: 0;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .hero-video-actions-inline {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .hero-video-link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 6px 14px;
+        border-radius: 20px;
+        transition: all 0.25s ease;
+      }
+      .hero-video-link-btn:hover {
+        background: rgba(237, 41, 57, 0.25);
+        border-color: #ff5252;
+        color: #fff;
+      }
+
       /* ── Metrics Cards Grid ── */
       .paris-metrics-bar {
         display: grid;
@@ -1583,6 +1728,52 @@
         </div>
         <p class="hero-lead">UMPSA, through the ARC FTKPM Lab, leads <span class="hl">autonomous vehicle R&amp;D</span> in Malaysia. Together with <span class="hl">PIX Moving</span> and <span class="hl">Move Robotic</span>, we are bringing Robobus to Malaysian roads and taking our DREBAR technology to the world.</p>
 
+        <!-- Hero Cinematic Video Showcase -->
+        <div class="paris-hero-video-showcase" id="hero-video-showcase">
+          <div class="hero-video-glow-backdrop"></div>
+          <div class="hero-video-frame">
+            <div class="hero-video-topbar">
+              <div class="hero-video-badge">
+                <span class="live-dot"></span>
+                <span>Featured Collaboration Video</span>
+              </div>
+              <div class="hero-video-partners">
+                <span>UMPSA</span>
+                <span style="color: var(--color-primary-teal);">×</span>
+                <span>Move Robotic</span>
+                <span style="color: var(--color-accent-gold);">×</span>
+                <span>PIX Moving</span>
+              </div>
+            </div>
+            <div class="hero-video-player-container">
+              <iframe 
+                src="https://www.youtube.com/embed/6Vfed5Hnlyw?si=EtVfoAMqbdBB7h11&rel=0" 
+                title="Robobus Collaboration UMPSA, Move Robotic and Pix Moving" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <div class="hero-video-bottombar">
+              <div class="hero-video-caption">
+                <h4>Robobus Autonomous Mobility Collaboration in Malaysia</h4>
+                <p>Live field testbed integration, drive-by-wire testing, and tripartite commercialization partnership.</p>
+              </div>
+              <div class="hero-video-actions-inline">
+                <a href="https://www.youtube.com/watch?v=6Vfed5Hnlyw" target="_blank" rel="noopener noreferrer" class="hero-video-link-btn">
+                  <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                  <span>Watch on YouTube</span>
+                </a>
+                <button type="button" class="hero-video-link-btn" onclick="window.openRobobusSpecModal()" style="cursor: pointer;">
+                  <i class="fas fa-microchip" style="color: var(--color-accent-gold);"></i>
+                  <span>Robobus Specs</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Live Metrics Bar -->
         <div class="paris-metrics-bar">
           <div class="metric-box">
@@ -1608,7 +1799,11 @@
         </div>
 
         <div class="hero-actions">
-          <a href="#robobus" class="btn-paris-solid">
+          <a href="#hero-video-showcase" class="btn-paris-solid" style="background: linear-gradient(135deg, #ED2939, #B31926); color: #fff; box-shadow: 0 6px 20px rgba(237, 41, 57, 0.45);">
+            <i class="fab fa-youtube"></i>
+            <span>Watch Showcase Video</span>
+          </a>
+          <a href="#robobus" class="btn-paris-outline">
             <i class="fas fa-bus"></i>
             <span>Robobus Coming to Malaysia</span>
           </a>
@@ -1762,9 +1957,9 @@
                 <i class="fas fa-microchip"></i>
                 <span>View Robobus Technical Specs</span>
               </button>
-              <a href="https://www.youtube.com/watch?v=qcvoydJkKkQ" target="_blank" rel="noopener noreferrer" class="btn-paris-outline">
+              <a href="https://www.youtube.com/watch?v=6Vfed5Hnlyw" target="_blank" rel="noopener noreferrer" class="btn-paris-outline">
                 <i class="fab fa-youtube" style="color: #ff0000;"></i>
-                <span>Watch Official Video</span>
+                <span>Watch Collaboration Video</span>
               </a>
             </div>
           </div>
@@ -1804,6 +1999,23 @@
                     <span style="font-size: 0.72rem; color: var(--color-primary-teal); background: rgba(0, 162, 162, 0.15); padding: 3px 8px; border-radius: 6px; font-weight: 700; white-space: nowrap;">National Pilot</span>
                   </div>
                   <p>National pilot trials, tropical weather sensor tuning &amp; campus route operations led by UMPSA.</p>
+                </div>
+              </div>
+
+              <!-- Featured Card 3: Live Video Collaboration -->
+              <div class="media-frame" style="border-color: rgba(237, 41, 57, 0.45); box-shadow: 0 16px 40px rgba(237, 41, 57, 0.18);">
+                <span class="media-tag-float" style="background: linear-gradient(135deg, #ED2939, #B31926); color: #fff; font-weight: 800;">
+                  <i class="fab fa-youtube" style="margin-right: 4px;"></i> Collaboration Video
+                </span>
+                <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden;">
+                  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/6Vfed5Hnlyw?si=EtVfoAMqbdBB7h11" title="Robobus Collaboration UMPSA, Move Robotic and Pix Moving" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+                </div>
+                <div class="media-caption-box">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem; gap: 8px;">
+                    <h4 style="margin: 0; font-size: 1.15rem; color: #fff;">UMPSA × Move Robotic × PIX Moving</h4>
+                    <span style="font-size: 0.72rem; color: #ff6b6b; background: rgba(237, 41, 57, 0.15); padding: 3px 8px; border-radius: 6px; font-weight: 700; white-space: nowrap;">Field Demo</span>
+                  </div>
+                  <p>Official collaborative demonstration and live autonomous vehicle testbed deployment in Malaysia.</p>
                 </div>
               </div>
             </div>

@@ -71,6 +71,22 @@ function renderNewsFilters() {
   });
 }
 
+// Global modal trigger for YouTube Embed
+window.openYouTubeModal = function(videoId, title) {
+  const modal = document.getElementById('newsVideoModal');
+  const container = document.getElementById('newsVideoContainer');
+  if (!modal || !container) return;
+
+  container.innerHTML = `
+    <div style="position: relative; width: 100%; max-width: 800px; aspect-ratio: 16/9; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.15); background: #000;">
+      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" title="${title || 'YouTube Video Player'}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  `;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
 // Global modal trigger for TikTok Embed
 window.openTikTokModal = function(citeUrl, videoId) {
   const modal = document.getElementById('newsVideoModal');
@@ -129,9 +145,18 @@ function renderNewsCards() {
     return;
   }
 
-  arcNewsGridContainer.innerHTML = filtered.map(item => `
+  arcNewsGridContainer.innerHTML = filtered.map(item => {
+    const isYouTube = item.isVideo && item.videoPlatform === 'youtube';
+    const clickVideoAction = isYouTube 
+      ? `window.openYouTubeModal('${item.videoId}', '${(item.title || '').replace(/'/g, "\\'")}')`
+      : `window.openTikTokModal('${item.videoCite}', '${item.videoId}')`;
+    const openPlatformText = isYouTube ? 'Open in YouTube' : 'Open in TikTok';
+    const platformIcon = isYouTube ? 'fab fa-youtube' : 'fab fa-tiktok';
+    const clickThumbAction = item.isVideo ? clickVideoAction : `window.openLightbox && window.openLightbox('${item.lightboxImage || item.image}')`;
+
+    return `
     <article class="news-card ${item.featured ? 'featured-card' : ''}" id="${item.id}">
-      <div class="news-thumb-wrapper" onclick="${item.isVideo ? `window.openTikTokModal('${item.videoCite}', '${item.videoId}')` : `window.openLightbox && window.openLightbox('${item.lightboxImage || item.image}')`}" title="${item.isVideo ? 'Click to watch R&D Video' : 'Click to expand full image'}">
+      <div class="news-thumb-wrapper" onclick="${clickThumbAction}" title="${item.isVideo ? 'Click to watch Video' : 'Click to expand full image'}">
         <img src="${item.image}" alt="${item.title}" class="news-thumb" loading="lazy" />
         <span class="news-badge ${item.badgeClass || ''}">${item.badge}</span>
         ${item.isVideo ? `
@@ -157,13 +182,13 @@ function renderNewsCards() {
         
         <div class="news-actions">
           ${item.isVideo ? `
-            <button type="button" class="news-btn-primary" onclick="window.openTikTokModal('${item.videoCite}', '${item.videoId}')">
-              <i class="fab fa-tiktok"></i>
-              <span>${item.actionText || 'Watch R&D Reel'}</span>
+            <button type="button" class="news-btn-primary" onclick="${clickVideoAction}">
+              <i class="${platformIcon}"></i>
+              <span>${item.actionText || 'Watch Video'}</span>
             </button>
             <a href="${item.externalUrl}" target="_blank" rel="noopener noreferrer" class="news-btn-secondary">
               <i class="fas fa-external-link-alt"></i>
-              <span>Open in TikTok</span>
+              <span>${openPlatformText}</span>
             </a>
           ` : `
             ${item.externalUrl ? `
@@ -187,7 +212,8 @@ function renderNewsCards() {
         </div>
       </div>
     </article>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // Initialize News Section if elements exist
