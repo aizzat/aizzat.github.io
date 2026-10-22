@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private source material (news PDFs, LinkedIn captures) - never publish
+news-pdf/
