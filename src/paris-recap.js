@@ -38,6 +38,7 @@ document.getElementById('recap-stats').innerHTML = recapStats.map(s => `
     <i class="${s.brand ? 'fab' : 'fas'} ${s.icon}"></i>
     <div class="stat-value">${esc(s.value)}</div>
     <div class="stat-label">${esc(s.label)}</div>
+    ${s.note ? `<div class="stat-note">${esc(s.note)}</div>` : ''}
   </div>`).join('');
 
 // ── Roles ──
@@ -60,20 +61,24 @@ document.getElementById('recap-timeline').innerHTML = recapTimeline.map(t => `
 
 // ── Press ──
 const pressGrid = document.getElementById('recap-press');
+const regionFlags = { Malaysia: '🇲🇾', France: '🇫🇷', Germany: '🇩🇪' };
 const renderPress = (region) => {
   const items = region === 'all' ? recapPress : recapPress.filter(p => p.region === region);
   pressGrid.innerHTML = items.map(p => `
-    <a class="press-card" href="${p.url}" target="_blank" rel="noopener noreferrer">
+    <a class="press-card${p.featured ? ' featured' : ''}" href="${p.url}" target="_blank" rel="noopener noreferrer">
       <div class="press-top">
-        <span class="press-outlet">${esc(p.outlet)}</span>
+        <span class="press-outlet">${esc(p.outlet)}${p.section ? `<small>${esc(p.section)}</small>` : ''}</span>
         <span class="press-tags">
-          <span class="tag">${p.region === 'France' ? '🇫🇷' : '🇲🇾'} ${esc(p.lang)}</span>
+          ${p.featured ? '<span class="tag featured"><i class="fas fa-star" aria-hidden="true"></i> Featured</span>' : ''}
+          <span class="tag">${regionFlags[p.region] || ''} ${esc(p.lang)}</span>
+          ${p.featured ? '<span class="tag">Industry newsletter</span>' : ''}
           ${p.sponsored ? '<span class="tag sponsored">Partner feature</span>' : ''}
         </span>
       </div>
       <h3 class="press-title">${esc(p.title)}</h3>
+      ${p.quote ? `<p class="post-quote press-quote">${esc(p.quote)}</p>` : ''}
       <p class="press-summary">${esc(p.summary)}</p>
-      <div class="card-foot"><span>${esc(p.date)}</span><span class="go">Read article <i class="fas fa-arrow-right"></i></span></div>
+      <div class="card-foot"><span>${esc(p.date)}</span><span class="go">${p.featured ? 'Read the newsletter' : 'Read article'} <i class="fas fa-arrow-right"></i></span></div>
     </a>`).join('');
 };
 renderPress('all');

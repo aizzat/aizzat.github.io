@@ -6,8 +6,8 @@ initThreeJS();
 
 // Populate ARC FTKPM Researchers
 const arcMembers = [
-  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Principal Investigator, Lead AEROGROUND team', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
-  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Lead of Technical Development', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Works on advanced actuators, smart industrial systems, and computational fluid dynamics.' },
+  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Head of ARC FTKPM Lab, Principal Investigator, Lead AEROGROUND team', email: 'maizzat@umpsa.edu.my', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, software development.' },
+  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Head of ARMS FTKPM Cluster, Technical Lead ARC FTKPM', email: 'ismayuzri@umpsa.edu.my', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Advanced manufacturing, additive manufacturing, mechatronic system, robotic system.' },
   { name: 'Chang Kian Hong', shortName: 'Chang', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/ChangKianHong.png?set=set1&bgset=bg1', website: '', about: 'Specializes in advanced robotic development and mechanical integration for autonomous systems.' },
   { name: 'Wong Chee Cheong', shortName: 'Wong', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/WongCheeCheong.png?set=set1&bgset=bg1', website: '', about: 'Focuses on low-level firmware development and hardware-software interfacing.' },
   { name: 'Akhil Vinayak Sajith', shortName: 'Akhil', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/AkhilVinayakSajith.png?set=set1&bgset=bg1', website: '', about: 'Specializes in robotic firmware planning and systems architecture for autonomous robotics.' },
@@ -32,6 +32,7 @@ if (arcResearchersContainer) {
         <div class="researcher-info">
           <h4>${r.name}</h4>
           <p style="margin-bottom: 0.5rem">${r.title}</p>
+          ${r.email ? `<a href="mailto:${r.email}" class="member-email"><i class="fas fa-envelope"></i>${r.email}</a>` : ''}
           ${r.website ? `<a href="${r.website}" target="_blank" class="btn-website"><i class="fas fa-external-link-alt" style="margin-right: 0.5rem;"></i>Personal Website</a>` : ''}
           <div class="researcher-about">
             <p>${r.about}</p>

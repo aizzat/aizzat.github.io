@@ -22,7 +22,7 @@ export const arcNewsItems = [
     category: 'paris-motor-show',
     badge: 'Paris 2026 🇫🇷',
     badgeClass: 'badge-accent',
-    summary: 'At the 91st Paris Motor Show, UMPSA exchanged a Memorandum of Agreement with PIX Moving and Move Robotic for the pilot deployment and testing of RoboBus in Malaysia, witnessed by the Ambassador of Malaysia to France. UMPSA leads R&D on autonomous algorithms for Malaysian roads, Move Robotic leads commercialisation, and PIX Moving provides the autonomous platform. The same day, UMPSA delivered the keynote "Autonomy in Motion" at the PIX Moving stand. Covered by Bernama and featured in French media.',
+    summary: 'At the 91st Paris Motor Show, UMPSA exchanged a Memorandum of Agreement with PIX Moving and Move Robotic for the pilot deployment and testing of RoboBus in Malaysia, witnessed by the Ambassador of Malaysia to France. UMPSA leads R&D on autonomous algorithms for Malaysian roads, Move Robotic leads commercialisation, and PIX Moving provides the autonomous platform. The same day, UMPSA delivered the keynote "Autonomy in Motion" at the PIX Moving stand. Covered by Bernama, featured in French media, and named in Frenus’s Mondial de l’Auto 2026 industry recap.',
     image: '/arcftkpm-resources/paris-2026-recap/moa-group-640.jpg',
     lightboxImage: '/arcftkpm-resources/paris-2026-recap/moa-group-1600.jpg',
     source: 'UMPSA, PIX Moving & Move Robotic',

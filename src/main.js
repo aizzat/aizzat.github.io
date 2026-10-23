@@ -282,9 +282,9 @@ if (labsContainer) {
 
 // Populate researchers
 const researchers = [
-  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Head of Cluster', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Additive manufacturing, robotics, and design and development for mechatronic systems.' },
+  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Head of ARMS FTKPM Cluster, Technical Lead ARC FTKPM', email: 'ismayuzri@umpsa.edu.my', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Advanced manufacturing, additive manufacturing, mechatronic system, robotic system.' },
   { name: 'Assoc. Prof. Dr. Abdul Aziz Bin Jaafar', shortName: 'PM Dr. Abdul Aziz', title: 'Researcher', tags: ['P04'], image: '/members/pm-aziz-7.jpg', about: 'Expert in industrial mechatronics, advanced manufacturing, and thermofluid process control.' },
-  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Head of ARC FTKPM Laboratory', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, and intelligent assistive technologies.' },
+  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Head of ARC FTKPM Lab, Principal Investigator, Lead AEROGROUND team', email: 'maizzat@umpsa.edu.my', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, software development.' },
   { name: 'Dr. Ahmad Najmuddin Bin Ibrahim', shortName: 'Dr. Najmuddin', title: 'Researcher', tags: ['P02'], image: '/members/najmuddin.jpg', website: 'https://www.drnajmuddin.com/', about: 'Focuses on intelligent robotics, kinematics, and dynamic control of robotic systems.' },
   { name: 'Dr. Mohd Azri Hizami Bin Rasid', shortName: 'Dr. Azri', title: 'Researcher', tags: ['P03'], image: '/members/azri.jpg', website: 'https://azrihizami.github.io/emdlab-student-opportunities/', about: 'Research interests include electric motor drives, electromechanical actuators, and fault detection.' },
   { name: 'Ts. Dr. Sheikh Muhammad Hafiz Fahami Bin Zainal', shortName: 'Dr. Hafiz', title: 'Researcher', tags: ['P03'], image: '/members/hafiz-21.jpg', website: 'https://scholar.google.com/citations?user=z6j75UsAAAAJ&hl=en', about: 'Expertise in CAD design, mechanical design and optimisation, and vehicle steering control.' },
@@ -314,6 +314,7 @@ researchers.forEach((r, index) => {
       <div class="researcher-info">
         <h4>${r.name}</h4>
         <p style="margin-bottom: 0.5rem">${r.title}</p>
+        ${r.email ? `<a href="mailto:${r.email}" class="member-email"><i class="fas fa-envelope"></i>${r.email}</a>` : ''}
         ${r.website ? `<a href="${r.website}" target="_blank" class="btn-website"><i class="fas fa-external-link-alt" style="margin-right: 0.5rem;"></i>Personal Website</a>` : ''}
         <div class="researcher-about">
           <p>${r.about}</p>

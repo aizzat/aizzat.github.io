@@ -8,7 +8,7 @@ const IMG = '/arcftkpm-resources/paris-2026-recap';
 
 export const recapStats = [
   { value: '5', label: 'Malaysian news outlets', icon: 'fa-newspaper' },
-  { value: '2', label: 'French partner features', icon: 'fa-language' },
+  { value: '3', label: 'European media features', note: '🇫🇷 2 · 🇩🇪 1', icon: 'fa-earth-europe' },
   { value: '5', label: 'Partner posts on LinkedIn', icon: 'fa-linkedin', brand: true },
   { value: '5', label: 'Countries at one stand', icon: 'fa-globe' }
 ];
@@ -38,6 +38,12 @@ export const recapTimeline = [
     date: '15 Oct 2026',
     title: 'MoA exchange & keynote',
     text: 'The three parties exchange a Memorandum of Agreement for the pilot deployment of RoboBus in Malaysia, witnessed by the Ambassador of Malaysia to France. UMPSA also delivers a keynote at the PIX Moving stand.',
+    highlight: true
+  },
+  {
+    date: '21 Oct 2026',
+    title: 'Featured in European industry media',
+    text: 'Frenus\'s Mondial de l\'Auto 2026 recap names the UMPSA, PIX Moving and Move Robotic RoboBus pilot agreement under Automated Mobility.',
     highlight: true
   }
 ];
@@ -82,6 +88,18 @@ export const recapRoles = [
 ];
 
 export const recapPress = [
+  {
+    outlet: 'Frenus',
+    region: 'Germany',
+    lang: 'EN',
+    date: '21 Oct 2026',
+    section: 'Special – Mobility',
+    title: 'Mondial de l\'Auto 2026: The Shift from Vehicle Specifications to Local Execution',
+    quote: 'UMPSA, PIX Moving and Move Robotic signed a Robobus pilot agreement for Malaysia',
+    summary: 'Frenus\'s recap of the Mondial de l\'Auto lists the UMPSA, PIX Moving and Move Robotic RoboBus pilot agreement for Malaysia under Automated Mobility. Frenus notes that the show gave automated vehicles a dedicated place, "from PIX Moving to Hyundai with Waymo and Tesla\'s Cybercab". Muhammad Aizzat Zakaria of UMPSA is credited among the contributors to this edition.',
+    url: 'https://www.frenus.com/newsletters/mondial-de-lauto-2026-the-shift-from-vehicle-specifications-to-local-execution',
+    featured: true
+  },
   {
     outlet: 'Bernama',
     region: 'Malaysia',
