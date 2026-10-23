@@ -72,7 +72,8 @@
         transition: var(--transition);
       }
       
-      .timeline-item:hover::after {
+      .timeline-item:hover::after,
+      .timeline-item.robot-stop::after {
         background-color: var(--color-accent);
         transform: scale(1.3);
       }
