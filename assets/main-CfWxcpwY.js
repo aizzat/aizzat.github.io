@@ -1,4 +1,4 @@
-import"./style-DYA5tIf7.js";import{t as e}from"./three-bg-DOo8o5Uc.js";document.querySelector(`#app`).innerHTML=`
+import"./style-DYA5tIf7.js";import{t as e}from"./three-bg-CyEDL8FU.js";document.querySelector(`#app`).innerHTML=`
   <nav class="navbar">
     <div class="container nav-container">
       <div class="nav-header">
