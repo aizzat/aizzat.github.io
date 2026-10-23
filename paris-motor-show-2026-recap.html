@@ -560,6 +560,52 @@
       .own-post p { margin: 0; color: var(--text-muted); }
       .own-post strong { color: #fff; }
 
+      /* ── Brochure flip book ── */
+      .flipbook-frame {
+        max-width: 1100px;
+        margin: 0 auto;
+        border-radius: 6px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+        outline: none;
+      }
+      .flipbook-frame:focus-visible { box-shadow: 0 0 0 3px var(--color-primary-teal), 0 20px 50px rgba(0, 0, 0, 0.55); }
+      .flip-page { background: #fff; overflow: hidden; }
+      .flip-page img { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+      /* Without JS (or before page-flip starts) the pages simply stack */
+      .flipbook:not(.stf__parent) { display: grid; gap: 1rem; }
+      .flipbook:not(.stf__parent) .flip-page { aspect-ratio: 2400 / 1640; border-radius: 6px; }
+      .flipbook-controls {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+      }
+      .flip-btn {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0 1rem;
+        border-radius: 22px;
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .flip-btn:hover:not(:disabled) { background: var(--color-primary-teal); border-color: var(--color-primary-teal); color: #000; }
+      .flip-btn:disabled { opacity: 0.35; cursor: default; }
+      .flip-btn.umpsa { border-color: var(--color-accent-gold); color: var(--color-accent-gold); }
+      .flip-btn.umpsa:hover { background: var(--color-accent-gold); border-color: var(--color-accent-gold); }
+      .flip-counter { min-width: 7.5rem; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+      .flip-counter small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--text-muted); max-width: 16rem; margin: 2px auto 0; }
+      .flipbook-section .press-note { text-align: center; }
+
       /* ── Gallery ── */
       .gallery-grid {
         display: grid;
@@ -711,6 +757,8 @@
         .own-post .btn { width: 100%; }
         .video-topbar, .video-bottombar { padding: 0.9rem 1rem; }
         .video-bottombar .btn { width: 100%; }
+        .flipbook-controls { gap: 0.5rem; }
+        .flip-counter { order: -1; flex: 1 1 100%; }
       }
     </style>
   </head>
@@ -731,6 +779,7 @@
           <li><a href="#video">Video</a></li>
           <li><a href="#keynote">Keynote</a></li>
           <li><a href="#news">In the News</a></li>
+          <li><a href="#brochure">Brochure</a></li>
           <li><a href="#partners">Partners Say</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="/paris-motor-show.html"><i class="fas fa-flag"></i> Event Page</a></li>
@@ -892,8 +941,30 @@
       </div>
     </section>
 
+    <!-- Brochure -->
+    <section class="recap-section tint flipbook-section" id="brochure">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-badge"><i class="fas fa-book-open"></i> Partner Brochure</div>
+          <h2 class="section-title">Rewrite the City with PIX Moving</h2>
+          <p class="section-subtitle">The PIX Moving brochure from Mondial de l’Auto 2026, with UMPSA featured on page 14. Drag a page corner, swipe or use the arrows to turn pages.</p>
+        </div>
+        <div class="flipbook-frame" id="brochure-frame" tabindex="0" role="region" aria-roledescription="flip book" aria-label="PIX Moving brochure. Use the left and right arrow keys to turn pages.">
+          <div class="flipbook" id="brochure-book"></div>
+        </div>
+        <div class="flipbook-controls">
+          <button type="button" class="flip-btn" id="brochure-prev" aria-label="Previous page"><i class="fas fa-chevron-left"></i></button>
+          <div class="flip-counter" id="brochure-counter" aria-live="polite"></div>
+          <button type="button" class="flip-btn" id="brochure-next" aria-label="Next page"><i class="fas fa-chevron-right"></i></button>
+          <button type="button" class="flip-btn umpsa" id="brochure-umpsa"><i class="fas fa-university"></i> UMPSA page</button>
+          <button type="button" class="flip-btn" id="brochure-zoom"><i class="fas fa-search-plus"></i> Zoom</button>
+        </div>
+        <p class="press-note">Brochure © PIX Moving, shared courtesy of PIX Moving.</p>
+      </div>
+    </section>
+
     <!-- Partner posts -->
-    <section class="recap-section tint" id="partners">
+    <section class="recap-section" id="partners">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-badge"><i class="fab fa-linkedin"></i> What Our Partners Are Saying</div>
@@ -909,7 +980,7 @@
     </section>
 
     <!-- Gallery -->
-    <section class="recap-section" id="gallery">
+    <section class="recap-section tint" id="gallery">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-badge"><i class="fas fa-images"></i> Gallery</div>
@@ -922,7 +993,7 @@
     </section>
 
     <!-- What's next -->
-    <section class="recap-section tint" id="next">
+    <section class="recap-section" id="next">
       <div class="container">
         <div class="section-head center reveal">
           <div class="section-badge"><i class="fas fa-forward"></i> What’s Next</div>
@@ -956,7 +1027,7 @@
           <a href="https://www.pixmoving.com/robobus" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> PIX RoboBus</a>
           <a href="https://www.umpsa.edu.my" target="_blank" rel="noopener noreferrer"><i class="fas fa-university"></i> UMPSA Official</a>
         </div>
-        <p class="copyright">&copy; 2026 ARC FTKPM Laboratory, Universiti Malaysia Pahang Al-Sultan Abdullah. All rights reserved. Photos credited to PIX Moving are used courtesy of PIX Moving.</p>
+        <p class="copyright">&copy; 2026 ARC FTKPM Laboratory, Universiti Malaysia Pahang Al-Sultan Abdullah. All rights reserved. Photos credited to PIX Moving and the PIX Moving brochure are used courtesy of PIX Moving.</p>
       </div>
     </footer>
 

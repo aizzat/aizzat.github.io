@@ -7,7 +7,7 @@
 const IMG = '/arcftkpm-resources/paris-2026-recap';
 
 export const recapStats = [
-  { value: '4', label: 'Malaysian news outlets', icon: 'fa-newspaper' },
+  { value: '5', label: 'Malaysian news outlets', icon: 'fa-newspaper' },
   { value: '2', label: 'French partner features', icon: 'fa-language' },
   { value: '5', label: 'Partner posts on LinkedIn', icon: 'fa-linkedin', brand: true },
   { value: '5', label: 'Countries at one stand', icon: 'fa-globe' }
@@ -108,6 +108,15 @@ export const recapPress = [
     title: 'UMPSA, Move Robotic dan PIX Moving meterai kerjasama bangunkan teknologi mobiliti autonomi di Malaysia',
     summary: 'A detailed account of the MoA, including a joint data-sovereignty strategy and the link to UMPSA\'s 2026–2030 strategic plan.',
     url: 'https://www.funtasticko.net/umpsa-move-robotic-dan-pix-moving-meterai-kerjasama-bangunkan-teknologi-mobiliti-autonomi-di-malaysia/'
+  },
+  {
+    outlet: 'Careta',
+    region: 'Malaysia',
+    lang: 'BM',
+    date: '16 Oct 2026',
+    title: 'UMPSA Bawa Projek Teknologi Autonomi di Paris Motor Show',
+    summary: 'Malaysian automotive news on the RoboBus project: UMPSA\'s own DREBAR-based software and data sovereignty, ODD testing on campus before expanding to Pekan, and UMPSA\'s role as PIX Moving\'s expert partner in Malaysia.',
+    url: 'https://careta.my/article/umpsa-bawa-projek-teknologi-autonomi-di-paris-motor-show'
   },
   {
     outlet: 'Amanz',
@@ -220,3 +229,27 @@ export const recapGalleryGroups = [
   { id: 'keynote', label: 'Keynote' },
   { id: 'network', label: 'Global Network' }
 ];
+
+// PIX Moving brochure from the stand, one landscape page per entry (images in /brochure)
+export const recapBrochure = [
+  'Rewrite the City with City Robotics',
+  'Introducing PIX Moving',
+  'Rooted in partnership: closer to European service',
+  'From autonomous technology to approved public transport',
+  'Bringing autonomous mobility to Germany\'s city streets',
+  'PIX RoboBus begins its first exploration in Belgium',
+  'A ride through Robot City in Davos',
+  'From developer training to RoboBus deployment',
+  'Where city robots enter everyday life',
+  'Built locally, proven on public roads',
+  'From the Dubai challenge to service in Madinah',
+  'EduTech future mobility labs',
+  'TREEZE × PIX Moving',
+  'UMPSA × PIX Moving',
+  'Welcome to the future of city robotics'
+].map((title, i) => {
+  const base = `${IMG}/brochure/page-${String(i + 1).padStart(2, '0')}`;
+  return { title, small: `${base}-900.webp`, medium: `${base}-1600.webp`, full: `${base}-2400.webp` };
+});
+
+export const BROCHURE_UMPSA_PAGE = 13;

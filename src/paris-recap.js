@@ -5,8 +5,11 @@ import {
   recapPress,
   recapPartnerPosts,
   recapGallery,
-  recapGalleryGroups
+  recapGalleryGroups,
+  recapBrochure,
+  BROCHURE_UMPSA_PAGE
 } from './data/parisRecapData.js';
+import { PageFlip } from 'page-flip';
 
 const IMG = '/arcftkpm-resources/paris-2026-recap';
 
@@ -131,7 +134,8 @@ const showLightbox = () => {
   const item = lbList[lbPos];
   lbImg.src = item.full;
   lbImg.alt = item.caption;
-  lbCaption.innerHTML = `${esc(item.caption)}${item.credit ? `<small>Photo courtesy of ${esc(item.credit)}</small>` : ''}`;
+  const credit = item.creditLine || (item.credit && `Photo courtesy of ${item.credit}`);
+  lbCaption.innerHTML = `${esc(item.caption)}${credit ? `<small>${esc(credit)}</small>` : ''}`;
   const multi = lbList.length > 1;
   lightbox.querySelector('.lb-prev').hidden = !multi;
   lightbox.querySelector('.lb-next').hidden = !multi;
@@ -196,6 +200,72 @@ lightbox.addEventListener('touchend', (e) => {
   const dx = e.changedTouches[0].clientX - touchX;
   if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
   touchX = null;
+});
+
+// ── Brochure flip book ──
+const bookEl = document.getElementById('brochure-book');
+const bookFrame = document.getElementById('brochure-frame');
+const bookCounter = document.getElementById('brochure-counter');
+const bookPrev = document.getElementById('brochure-prev');
+const bookNext = document.getElementById('brochure-next');
+const brochureItems = recapBrochure.map((b, i) => ({
+  caption: `Page ${i + 1} of ${recapBrochure.length}: ${b.title}`,
+  creditLine: 'Brochure courtesy of PIX Moving',
+  full: b.full
+}));
+
+// The first pages load right away, the rest are fetched as the reader gets close
+bookEl.innerHTML = recapBrochure.map((b, i) => `
+  <div class="flip-page">
+    <img src="${b.medium}" srcset="${b.small} 900w, ${b.medium} 1600w" sizes="(max-width: 1100px) 100vw, 1100px"
+      alt="PIX Moving brochure, page ${i + 1}: ${esc(b.title)}" width="1600" height="1093"
+      loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async" draggable="false">
+  </div>`).join('');
+const bookImgs = [...bookEl.querySelectorAll('img')];
+
+const book = new PageFlip(bookEl, {
+  width: 1600,
+  height: 1093,
+  size: 'stretch',
+  // Pages are landscape spreads already, so always show one page at a time
+  minWidth: 1200,
+  maxWidth: 1100,
+  minHeight: 100,
+  maxHeight: 2000,
+  usePortrait: true,
+  showCover: false,
+  maxShadowOpacity: 0.4,
+  flippingTime: 800,
+  mobileScrollSupport: true
+});
+book.loadFromHTML(bookEl.querySelectorAll('.flip-page'));
+// page-flip pins min-width to minWidth, which would overflow phones
+bookEl.style.minWidth = '0';
+book.update();
+
+const updateBook = () => {
+  const i = book.getCurrentPageIndex();
+  const total = book.getPageCount();
+  bookCounter.innerHTML = `Page ${i + 1} / ${total}<small>${esc(recapBrochure[i].title)}</small>`;
+  bookPrev.disabled = i === 0;
+  bookNext.disabled = i === total - 1;
+  bookImgs.slice(i, i + 3).forEach(img => { img.loading = 'eager'; });
+};
+book.on('flip', updateBook);
+updateBook();
+
+bookPrev.addEventListener('click', () => book.flipPrev());
+bookNext.addEventListener('click', () => book.flipNext());
+document.getElementById('brochure-umpsa').addEventListener('click', () => {
+  bookImgs[BROCHURE_UMPSA_PAGE].loading = 'eager';
+  book.flip(BROCHURE_UMPSA_PAGE);
+});
+document.getElementById('brochure-zoom').addEventListener('click', () => {
+  openLightbox(brochureItems, book.getCurrentPageIndex());
+});
+bookFrame.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') book.flipPrev();
+  if (e.key === 'ArrowRight') book.flipNext();
 });
 
 // ── Scroll reveal ──
