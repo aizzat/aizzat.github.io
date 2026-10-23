@@ -84,6 +84,7 @@
         gap: 10px;
         text-decoration: none;
         min-width: 0;
+        flex-shrink: 0;
       }
       .recap-logo-text {
         font-weight: 800;
@@ -117,6 +118,7 @@
         text-decoration: none;
         font-size: 0.92rem;
         font-weight: 600;
+        white-space: nowrap;
         transition: color 0.25s ease;
       }
       .recap-nav-links a:hover { color: var(--color-primary-teal); }
@@ -275,6 +277,7 @@
         color: var(--color-accent-gold);
       }
       .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+      .stat-note { font-size: 0.75rem; color: rgba(255, 255, 255, 0.55); margin-top: 0.3rem; letter-spacing: 0.5px; }
 
       /* ── Sections ── */
       .recap-section { padding: 5rem 0; }
@@ -536,6 +539,18 @@
       .card-foot { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: rgba(255, 255, 255, 0.55); gap: 0.5rem; }
       .card-foot .go { color: var(--color-primary-teal); font-weight: 700; white-space: nowrap; }
       .press-note { margin: 1.4rem 0 0; font-size: 0.85rem; color: rgba(255, 255, 255, 0.55); }
+      .press-card.featured {
+        grid-column: 1 / -1;
+        padding: 1.8rem;
+        border-color: rgba(255, 213, 0, 0.45);
+        background: linear-gradient(135deg, rgba(255, 213, 0, 0.08), rgba(0, 162, 162, 0.06));
+      }
+      .press-card.featured:hover { border-color: var(--color-accent-gold); }
+      .press-outlet small { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+      .tag.featured { background: var(--color-accent-gold); color: #000; }
+      .press-card.featured .press-title { font-size: 1.15rem; }
+      .press-quote { font-size: 1.3rem; font-weight: 700; line-height: 1.45; margin: 0.4rem 0 1rem; flex: none; }
+      .press-card.featured .press-summary { font-size: 0.95rem; max-width: 70ch; }
 
       .post-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
       .post-head .fa-linkedin { font-size: 1.9rem; color: #0a66c2; background: #fff; border-radius: 6px; line-height: 1; }
@@ -708,7 +723,8 @@
       }
 
       /* ── Responsive ── */
-      @media (max-width: 992px) {
+      /* Nav collapses earlier than the layout: nine links need ~1200px on one line */
+      @media (max-width: 1200px) {
         .mobile-menu-toggle { display: block; }
         .recap-nav-links {
           display: none;
@@ -727,6 +743,9 @@
         .recap-nav-links.active { display: flex; }
         .recap-nav-links a { display: block; padding: 0.75rem 0; font-size: 1rem; }
         .recap-nav-links .btn-nav-lab { display: inline-flex; margin-top: 0.5rem; padding: 0.6rem 1.2rem; }
+      }
+
+      @media (max-width: 992px) {
         .moa-grid, .keynote-grid, .history-wrap { grid-template-columns: 1fr; gap: 1.8rem; }
         .roles-grid, .next-grid { grid-template-columns: 1fr; }
         .stats-strip { grid-template-columns: repeat(2, 1fr); }
@@ -760,9 +779,9 @@
         .flip-counter { order: -1; flex: 1 1 100%; }
       }
     </style>
-    <script type="module" crossorigin src="/assets/parisRecap-Ch6dA3dA.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/style-DlkvI3Vy.js">
-    <link rel="stylesheet" crossorigin href="/assets/style-D2JqcBJ4.css">
+    <script type="module" crossorigin src="/assets/parisRecap-Ch2dpChD.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/style-DYA5tIf7.js">
+    <link rel="stylesheet" crossorigin href="/assets/style-C51uo6Wu.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -930,13 +949,14 @@
       <div class="container">
         <div class="section-head reveal">
           <div class="section-badge"><i class="fas fa-newspaper"></i> In the News</div>
-          <h2 class="section-title">Press coverage in Malaysia and France</h2>
+          <h2 class="section-title">Press coverage in Malaysia and Europe</h2>
           <p class="section-subtitle">Summaries are our own. Follow the links to read the original articles.</p>
         </div>
         <div class="filter-bar" role="group" aria-label="Filter press by region">
           <button type="button" class="filter-btn active" data-press-filter="all">All</button>
           <button type="button" class="filter-btn" data-press-filter="Malaysia">🇲🇾 Malaysia</button>
           <button type="button" class="filter-btn" data-press-filter="France">🇫🇷 France</button>
+          <button type="button" class="filter-btn" data-press-filter="Germany">🇩🇪 Germany</button>
         </div>
         <div class="card-grid" id="recap-press"></div>
         <p class="press-note"><span class="tag sponsored">Partner feature</span> marks articles published as sponsored content by PIX Moving.</p>
