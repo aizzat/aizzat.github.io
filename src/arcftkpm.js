@@ -1,34 +1,40 @@
 import { initThreeJS } from './three-bg.js';
 import { arcNewsCategories, arcNewsItems } from './data/arcNewsData.js';
+import { crewAvatar } from './crewAvatars.js';
 
 // Initialize the 3D Holographic Background
 initThreeJS();
 
 // Populate ARC FTKPM Researchers
 const arcMembers = [
-  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Head of ARC FTKPM Lab, Principal Investigator, Lead AEROGROUND team', email: 'maizzat@umpsa.edu.my', tags: ['P01', 'P02'], image: '/members/aizzat.jpeg', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, software development.' },
-  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Head of ARMS FTKPM Cluster, Technical Lead ARC FTKPM', email: 'ismayuzri@umpsa.edu.my', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.jpg', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Advanced manufacturing, additive manufacturing, mechatronic system, robotic system.' },
-  { name: 'Chang Kian Hong', shortName: 'Chang', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/ChangKianHong.png?set=set1&bgset=bg1', website: '', about: 'Specializes in advanced robotic development and mechanical integration for autonomous systems.' },
-  { name: 'Wong Chee Cheong', shortName: 'Wong', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/WongCheeCheong.png?set=set1&bgset=bg1', website: '', about: 'Focuses on low-level firmware development and hardware-software interfacing.' },
-  { name: 'Akhil Vinayak Sajith', shortName: 'Akhil', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/AkhilVinayakSajith.png?set=set1&bgset=bg1', website: '', about: 'Specializes in robotic firmware planning and systems architecture for autonomous robotics.' },
-  { name: 'Maryam Younus', shortName: 'Maryam', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/MaryamYounus.png?set=set1&bgset=bg1', website: '', about: 'Researcher focusing on path planning algorithms and navigation strategies for autonomous vehicles.' },
-  { name: 'Athirah Najihah Binti Zulkifli', shortName: 'Athirah', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/AthirahNajihah.png?set=set1&bgset=bg1', website: '', about: 'Researcher specializing in steering control mechanisms and autonomous vehicle dynamics.' },
-  { name: 'Tang Yue Xia', shortName: 'Tang', title: 'Fellow Member', tags: ['ARC'], image: 'https://robohash.org/TangYueXia.png?set=set1&bgset=bg1', website: '', about: 'Currently deployed on a fun, highly classified secret mission for the ARC FTKPM lab! 🕵️‍♀️🤖✨' }
+  { name: 'Assoc. Prof. Ts. Dr. Muhammad Aizzat Bin Zakaria', shortName: 'PM Dr. Aizzat', title: 'Head of ARC FTKPM Lab, Principal Investigator, Lead AEROGROUND team', email: 'maizzat@umpsa.edu.my', tags: ['P01', 'P02'], image: '/members/aizzat.webp', website: 'https://www.maizzat.my', about: 'Specializes in autonomous vehicles, mobile robotics, SLAM, software development.' },
+  { name: 'Dr. Ismayuzri Bin Ishak', shortName: 'Dr. Ismayuzri', title: 'Head of ARMS FTKPM Cluster, Technical Lead ARC FTKPM', email: 'ismayuzri@umpsa.edu.my', tags: ['P03', 'P04'], image: '/members/ismayuzri-1.webp', website: 'https://scholar.google.com/citations?user=T3IxOdwAAAAJ&hl=en', about: 'Advanced manufacturing, additive manufacturing, mechatronic system, robotic system.' },
+  { name: 'Chang Kian Hong', shortName: 'Chang', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'arm', role: 'Mech Integration' }, website: '', about: 'Specializes in advanced robotic development and mechanical integration for autonomous systems.' },
+  { name: 'Wong Chee Cheong', shortName: 'Wong', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'amr', emblem: 'chip', role: 'Firmware' }, website: '', about: 'Focuses on low-level firmware development and hardware-software interfacing.' },
+  { name: 'Akhil Vinayak Sajith', shortName: 'Akhil', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'amr', emblem: 'nodes', role: 'Systems Architecture' }, website: '', about: 'Specializes in robotic firmware planning and systems architecture for autonomous robotics.' },
+  { name: 'Maryam Younus', shortName: 'Maryam', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'pathfinder', role: 'Path Planning' }, website: '', about: 'Researcher focusing on path planning algorithms and navigation strategies for autonomous vehicles.' },
+  { name: 'Athirah Najihah Binti Zulkifli', shortName: 'Athirah', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'steer', role: 'Vehicle Dynamics' }, website: '', about: 'Researcher specializing in steering control mechanisms and autonomous vehicle dynamics.' },
+  { name: 'Tang Yue Xia', shortName: 'Tang', title: 'Fellow Member', tags: ['ARC'], crew: { robot: 'agent', role: 'Secret Mission' }, website: '', about: 'Currently deployed on a fun, highly classified secret mission for the ARC FTKPM lab! 🕵️‍♀️🤖✨' }
 ];
 
 const arcResearchersContainer = document.querySelector('#arc-researchers-grid');
 
 if (arcResearchersContainer) {
   let gridHTML = '';
-  
+  let crewNumber = 0;
+
   arcMembers.forEach((r, index) => {
     const initials = r.name.split(' ').map(n => n[0]).slice(0, 2).join('');
     const bgImage = r.image ? r.image : `https://placehold.co/400x400/184A92/FFFFFF?text=${initials}`;
     const rId = `arc-researcher-${index}`;
-    
+    // Students appear as ARC crew robots instead of photos, to keep their faces private
+    const avatar = r.crew
+      ? crewAvatar({ name: r.name, ...r.crew }, `ARC-${String(++crewNumber).padStart(2, '0')}`, r.crew.role)
+      : `<div class="researcher-img" style="background: url('${bgImage}') center/cover"></div>`;
+
     gridHTML += `
-      <div class="researcher-card animate-on-scroll" id="${rId}">
-        <div class="researcher-img" style="background: url('${bgImage}') center/cover"></div>
+      <div class="researcher-card animate-on-scroll" id="${rId}" tabindex="0">
+        ${avatar}
         <div class="researcher-info">
           <h4>${r.name}</h4>
           <p style="margin-bottom: 0.5rem">${r.title}</p>

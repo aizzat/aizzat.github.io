@@ -205,6 +205,98 @@ section {
   padding: 1.5rem;
 }
 
+/* --- ARC Crew robot avatars (students) --- */
+.crew-avatar {
+  position: relative;
+  overflow: hidden;
+  background: #060d14;
+}
+
+.crew-avatar svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.crew-callsign,
+.crew-role {
+  position: absolute;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.crew-callsign {
+  top: 10px;
+  left: 10px;
+  color: #000;
+  background: var(--color-accent);
+}
+
+.crew-role {
+  bottom: 10px;
+  right: 10px;
+  color: #00E5FF;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+}
+
+.crew-avatar .crew-wheel,
+.crew-avatar .crew-steer,
+.crew-avatar .crew-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.crew-avatar .crew-ring { animation: crew-ring 6s linear infinite; }
+.crew-avatar .crew-eye { animation: crew-blink 5s ease-in-out infinite; }
+.crew-avatar .crew-blink { animation: crew-led 1.6s ease-in-out infinite; }
+.crew-avatar .crew-route { animation: crew-route 3s linear infinite; }
+.crew-avatar .crew-steer { transform: rotate(-18deg); }
+.crew-avatar .crew-bot { animation: crew-hover-idle 4s ease-in-out infinite; }
+.crew-avatar .crew-scan { opacity: 0; }
+
+/* Hover or tap: the LiDAR scan sweeps down and the robot wakes up */
+.researcher-card:hover .crew-scan,
+.researcher-card:focus-within .crew-scan {
+  animation: crew-scan 1.4s ease-in-out infinite;
+}
+.researcher-card:hover .crew-wheel,
+.researcher-card:focus-within .crew-wheel { animation: crew-spin 0.8s linear infinite; }
+.researcher-card:hover .crew-ring,
+.researcher-card:focus-within .crew-ring { animation-duration: 1.2s; }
+.researcher-card:hover .crew-route,
+.researcher-card:focus-within .crew-route { animation-duration: 0.8s; }
+.researcher-card:hover .crew-steer,
+.researcher-card:focus-within .crew-steer { animation: crew-steer 1.6s ease-in-out infinite; }
+.researcher-card:hover .crew-arm,
+.researcher-card:focus-within .crew-arm { animation: crew-wave 1.2s ease-in-out infinite; }
+.researcher-card:hover .crew-eye,
+.researcher-card:focus-within .crew-eye { filter: brightness(1.6); }
+
+@keyframes crew-ring { to { stroke-dashoffset: -90; } }
+@keyframes crew-spin { to { transform: rotate(360deg); } }
+@keyframes crew-route { to { stroke-dashoffset: -44; } }
+@keyframes crew-steer { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+@keyframes crew-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes crew-led { 50% { opacity: 0.25; } }
+@keyframes crew-hover-idle { 50% { transform: translateY(-3px); } }
+@keyframes crew-wave { 50% { transform: rotate(-14deg); } }
+@keyframes crew-scan {
+  0% { transform: translateY(0); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(240px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crew-avatar *,
+  .researcher-card:hover .crew-avatar * { animation: none !important; }
+}
+
 .researcher-info h4 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
