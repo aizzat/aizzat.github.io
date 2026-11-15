@@ -12,7 +12,7 @@
     // Promotion window, Malaysia time (UTC+8), inclusive. Festival of Idea itself is 17-19 Nov 2026.
     start: '2026-11-15T00:00:00+08:00',
     end: '2026-11-20T23:59:59+08:00',
-    popupDelayMs: 3000,
+    popupDelayMs: 0,
     storageKey: 'arc_tiktok_popup_seen'
   };
 
@@ -43,6 +43,7 @@
     '.tt-pop-name{font-weight:800;font-size:1rem;line-height:1.25}' +
     '.tt-pop-handle{color:#ffffffb3;font-size:.85rem}' +
     '.tt-pop-ev{margin:0 0 .8rem;padding:.6rem .8rem;border-left:3px solid #25f4ee;background:#ffffff0f;border-radius:6px;font-size:.88rem;line-height:1.45}' +
+    '.tt-pop .tt-gift{font-weight:700;color:#ffd500}' +
     '.tt-pop p{margin:0 0 1rem;font-size:.9rem;line-height:1.45;color:#ffffffcc}' +
     '.tt-pop-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.7rem 1rem;' +
     'border-radius:999px;background:#fe2c55;color:#fff;font-weight:700;font-size:.95rem;text-decoration:none}' +
@@ -62,7 +63,7 @@
     a.href = CONFIG.url;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.innerHTML = ICON + '<span>Festival of Idea, PICC 17&ndash;19 Nov &middot; <span class="tt-long">Meet us at the UMPSA booth &middot; </span>Follow us on TikTok</span><b>Follow</b>';
+    a.innerHTML = ICON + '<span>Festival of Idea, PICC 17&ndash;19 Nov &middot; <span class="tt-long">Meet us at the UMPSA booth &middot; </span>Follow us on TikTok &amp; get a souvenir!</span><b>Follow</b>';
     nav.insertBefore(a, nav.firstChild);
   }
 
@@ -101,7 +102,7 @@
       '<div><div class="tt-pop-name">' + CONFIG.name + '</div>' +
       '<div class="tt-pop-handle">' + CONFIG.handle + '</div></div></div>' +
       '<div class="tt-pop-ev"><b>Festival of Idea 2026</b><br>PICC, Putrajaya &middot; 17&ndash;19 Nov<br>Meet us at the UMPSA booth!</div>' +
-      '<p>Follow our TikTok for live updates, robot demos and behind-the-scenes clips.</p>' +
+      '<p class="tt-gift">&#127873; Follow our TikTok and show it at the UMPSA booth to get a free souvenir!</p>' +
       '<a class="tt-pop-btn" href="' + CONFIG.url + '" target="_blank" rel="noopener noreferrer">' +
       ICON + ' Follow on TikTok</a>';
     document.body.appendChild(pop);
