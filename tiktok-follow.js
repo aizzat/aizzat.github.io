@@ -17,7 +17,7 @@
   };
 
   var now = Date.now();
-  if (now < Date.parse(CONFIG.start) || now > Date.parse(CONFIG.end)) return;
+  var active = now >= Date.parse(CONFIG.start) && now <= Date.parse(CONFIG.end);
 
   var ICON =
     '<svg viewBox="0 0 448 512" width="1em" height="1em" fill="currentColor" aria-hidden="true">' +
@@ -49,6 +49,10 @@
     '.tt-pop-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.7rem 1rem;' +
     'border-radius:999px;background:#fe2c55;color:#fff;font-weight:700;font-size:.95rem;text-decoration:none}' +
     '.tt-pop-btn:hover{background:#e0214a}' +
+    '.tt-foot{display:inline-flex;align-items:center;gap:.5rem;margin:.5rem 0;padding:.45rem 1rem;border-radius:999px;' +
+    'background:#000;color:#fff;font:600 .85rem/1.2 Outfit,system-ui,sans-serif;text-decoration:none;box-shadow:-2px -2px 0 #25f4ee,2px 2px 0 #fe2c55}' +
+    '.tt-foot:hover{filter:brightness(1.2)}' +
+    '.tt-foot-wrap{text-align:center}' +
     '@media (max-width:600px){.tt-long{display:none}}' +
     '@media (prefers-reduced-motion:reduce){.tt-pop{transition:none}}';
 
@@ -122,7 +126,38 @@
     requestAnimationFrame(function () { pop.classList.add('tt-show'); });
   }
 
+  // ---- Permanent footer link (always shown, not limited to the event) ----
+  function addFooter(f) {
+    if (f.querySelector('.tt-foot')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'tt-foot-wrap';
+    wrap.innerHTML =
+      '<a class="tt-foot" href="' + CONFIG.url + '" target="_blank" rel="noopener noreferrer">' +
+      ICON + ' Follow us on TikTok ' + CONFIG.handle + '</a>';
+    f.appendChild(wrap);
+  }
+
+  function watchFooter() {
+    function find() {
+      var all = document.querySelectorAll('footer');
+      return all.length ? all[all.length - 1] : null;
+    }
+    var f = find();
+    if (f) return addFooter(f);
+    var mo = new MutationObserver(function () {
+      var n = find();
+      if (n) {
+        mo.disconnect();
+        addFooter(n);
+      }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(function () { mo.disconnect(); }, 15000);
+  }
+
   function init() {
+    watchFooter();
+    if (!active) return;
     watchNav();
     setTimeout(showPopup, CONFIG.popupDelayMs);
   }
