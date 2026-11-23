@@ -137,7 +137,7 @@ document.querySelector('#app').innerHTML = `
         <div class="impact-item">
           <h3>03</h3>
           <p class="label">COMMERCIALISED PRODUCTS</p>
-          <p class="desc">Drebar • Agronetics • Modular Electric Motor Trainer</p>
+          <p class="desc"><a href="https://drebar-tech.maizzat.my/" target="_blank" rel="noopener noreferrer" class="impact-link">Drebar <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> • <a href="https://agronetics.net" target="_blank" rel="noopener noreferrer" class="impact-link">Agronetics <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> • Modular Electric Motor Trainer</p>
         </div>
         <div class="impact-item">
           <h3>03</h3>
@@ -172,7 +172,9 @@ document.querySelector('#app').innerHTML = `
             <img src="/partners/aeroground.PNG" alt="Aeroground">
             <img src="/partners/teraju-logo.png" alt="Teraju">
             <img src="/partners/EDMlab.png" alt="EDM Lab">
-            <img src="/partners/DREBAR Trademark - 1.png" alt="Drebar Trademark">
+            <a href="https://drebar-tech.maizzat.my/" target="_blank" rel="noopener noreferrer" class="partner-logo-link" title="DREBAR Tech — Autonomous Fleet Platform" aria-label="Visit DREBAR Tech website (opens in a new tab)">
+              <img src="/partners/DREBAR Trademark - 1.png" alt="Drebar Trademark">
+            </a>
           </div>
         </div>
       </div>

@@ -970,3 +970,169 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 162, 162, 0.4);
 }
+
+/* --- DREBAR Tech & Technology Transfer Links --- */
+.impact-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 162, 162, 0.45);
+  text-underline-offset: 3px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+
+.impact-link i {
+  font-size: 0.72em;
+}
+
+.impact-link:hover,
+.impact-link:focus-visible {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+  outline: none;
+}
+
+.partner-logo-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  border-radius: 6px;
+}
+
+.partner-logo-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.project-ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.project-ext-link:hover,
+.project-ext-link:focus-visible {
+  color: var(--color-accent);
+  outline: none;
+}
+
+.tech-transfer-card {
+  margin-top: 2.5rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(0, 162, 162, 0.12), rgba(24, 74, 146, 0.18));
+  border: 1px solid rgba(0, 162, 162, 0.35);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.tech-transfer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  flex: 1 1 420px;
+}
+
+.tech-transfer-logo {
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: var(--transition);
+}
+
+.tech-transfer-logo:hover,
+.tech-transfer-logo:focus-visible {
+  transform: scale(1.04);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.tech-transfer-logo img {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.tech-transfer-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.tech-transfer-copy h3 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
+}
+
+.tech-transfer-copy p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.tech-transfer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--color-primary);
+  color: #050505;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 30px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+  box-shadow: 0 5px 16px rgba(0, 162, 162, 0.35);
+}
+
+.tech-transfer-cta:hover,
+.tech-transfer-cta:focus-visible {
+  background: var(--color-accent);
+  color: #050505;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 213, 0, 0.35);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .tech-transfer-card {
+    padding: 1.4rem;
+    gap: 1.25rem;
+  }
+  .tech-transfer-brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tech-transfer-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

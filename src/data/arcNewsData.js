@@ -151,8 +151,8 @@ export const arcNewsItems = [
     image: '/arcftkpm-resources/news/drebaramr.webp',
     lightboxImage: '/arcftkpm-resources/news/drebaramr.webp',
     source: 'Special Project Grant',
-    externalUrl: '',
-    actionText: 'Inspect AMR',
+    externalUrl: 'https://drebar-tech.maizzat.my/',
+    actionText: 'Visit DREBAR Tech',
     tags: ['DREBAR', 'AMR', 'Delivery Robot', 'Firmware', 'ROS 2']
   },
   {
